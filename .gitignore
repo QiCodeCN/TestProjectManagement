@@ -1,0 +1,22 @@
+TPMWeb/.DS_Store
+TPMWeb/node_modules/
+TPMWeb/dist/
+TPMWeb/npm-debug.log*
+TPMWeb/yarn-debug.log*
+TPMWeb/yarn-error.log*
+TPMWeb/package-lock.json
+TPMWeb/tests/**/coverage/
+
+# Editor directories and files
+TPMWeb/.idea
+TPMWeb/.vscode
+TPMWeb/*.suo
+TPMWeb/*.ntvs*
+TPMWeb/*.njsproj
+TPMWeb/*.sln
+
+# service
+TPMService/.idea/
+TPMService/__pycache__/
+TPMService/apis/__pycache__/
+TPMService/venv/
