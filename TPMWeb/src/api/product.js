@@ -7,3 +7,11 @@ export function apiProductList() {
   })
 }
 
+export function apiProductCreate(requestBody) {
+  return request({
+    url: '/api/product/create',
+    method: 'post',
+    data: requestBody
+  })
+}
+
