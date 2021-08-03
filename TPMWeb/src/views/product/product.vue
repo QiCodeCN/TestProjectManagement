@@ -5,8 +5,12 @@
       <el-button type="primary" icon="el-icon-plus" style="float:right" @click="dialogProduct()">新增</el-button>
     </div>
     <!--对话框嵌套表，使用el-dialog-->
-    <el-dialog title="添加产品或项目" :visible.sync="dialogProductShow">
+    <!--<el-dialog v-bind:title="dialogProductStatus==='ADD'?'添加产品或项目':'修改产品或项目'" :visible.sync="dialogProductShow">-->
+    <el-dialog :title="dialogProductStatus==='ADD'?'添加产品或项目':'修改产品或项目'" :visible.sync="dialogProductShow">
       <el-form :model="product">
+        <el-form-item v-if="dialogProductStatus==='UPDATE'" label="编号" label-width="100px">
+          <el-input v-model="product.id" style="width: 80%" disabled></el-input>
+        </el-form-item>
         <el-form-item label="名称" label-width="100px">
           <el-input v-model="product.title" placeholder="请填写中文名称" style="width: 80%"></el-input>
         </el-form-item>
@@ -17,9 +21,11 @@
           <el-input v-model="product.desc" type="textarea" placeholder="备注说明" style="width: 80%"></el-input>
         </el-form-item>
       </el-form>
+      <!--复用根据对话框，根据条件v-if 判断显示和隐藏-->
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogProductShow = false">取 消</el-button>
-        <el-button type="primary" @click="pCreate()">确 定</el-button>
+        <el-button v-if="dialogProductStatus === 'ADD'" type="primary" @click="pCreate()">添 加</el-button>
+        <el-button v-if="dialogProductStatus === 'UPDATE'" type="primary" @click="pUpdate()">修 改</el-button>
       </span>
     </el-dialog>
     <!--样式组件 参考 https://element.eleme.cn/#/zh-CN/component/table-->
@@ -31,13 +37,21 @@
       <el-table-column prop="desc" label="描述" show-overflow-tooltip/>
       <el-table-column prop="operator" label="操作人"/>
       <el-table-column prop="update" label="操作时间"/>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-link icon="el-icon-edit" @click="dialogProductUpdate(scope.row)">编辑</el-link>
+          <el-link icon="el-icon-delete" @click="pSoftRemove(scope.row.id)">停用</el-link>
+          <el-link icon="el-icon-delete" @click="pHardRemove(scope.row.id)">删除</el-link>
+
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
 // 导入src/api/proudct 配置的请求列表方法
-import { apiProductList, apiProductCreate } from '@/api/product'
+import { apiProductList, apiProductCreate, apiProductUpdate, apiProductDelete, apiProductRemove } from '@/api/product'
 // 导入全局存储
 import store from '@/store'
 
@@ -58,6 +72,7 @@ export default {
       },
       // 控制嵌套表单显示和隐藏
       dialogProductShow: false,
+      dialogProductStatus: 'ADD',
       // 查询的数据
       tableData: []
     }
@@ -86,6 +101,8 @@ export default {
       this.product.desc = ''
       this.product.operator = this.op_user
 
+      // 标记弹窗是添加操作
+      this.dialogProductStatus = 'ADD'
       // 弹出对话框设置为true
       this.dialogProductShow = true
     },
@@ -104,8 +121,74 @@ export default {
         this.getProductList()
       })
     },
+    // 获取当前编辑行数数据并赋值给product
+    dialogProductUpdate(row) {
+      // 添加先初始化空状态
+      this.product.id = row.id
+      this.product.keyCode = row.keyCode
+      this.product.title = row.title
+      this.product.desc = row.desc
+      this.product.operator = this.op_user
+
+      // 标记弹窗是修改操作
+      this.dialogProductStatus = 'UPDATE'
+      // 弹出对话框设置为true
+      this.dialogProductShow = true
+    },
     pUpdate() {
-      console.log('update')
+      apiProductUpdate(this.product).then(res => {
+        this.$notify({
+          title: '成功',
+          message: '项目或产品修改成功',
+          type: 'success'
+        })
+        // 关闭对话框
+        this.dialogProductShow = false
+        // 重新查询刷新数据显示
+        this.getProductList()
+      })
+    },
+    pHardRemove(id) {
+      this.$confirm('此操作将永久删除该项目, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        apiProductDelete(id).then(res => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
+          // 重新查询刷新数据显示
+          this.getProductList()
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
+    },
+    pSoftRemove(id) {
+      this.$confirm('此操作将停用不显示, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        apiProductRemove(id).then(res => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
+          // 重新查询刷新数据显示
+          this.getProductList()
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     }
   }
 }
