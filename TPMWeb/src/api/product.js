@@ -8,6 +8,15 @@ export function apiProductList() {
   })
 }
 
+// 条件查询
+export function apiProductSearch(params) {
+  return request({
+    url: '/api/product/search',
+    method: 'get',
+    params: params
+  })
+}
+
 // 调用项目增加接口
 export function apiProductCreate(requestBody) {
   return request({
