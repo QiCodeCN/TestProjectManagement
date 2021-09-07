@@ -42,7 +42,7 @@
       <!--:data prop绑定{}中的key，label为自定义显示的列表头-->
       <el-table-column prop="appId" label="应用ID"/>
       <el-table-column prop="note" label="描述" show-overflow-tooltip/>
-      <!--<el-table-column prop="" label="归属分类"/>-->
+      <el-table-column prop="title" label="归属分类"/>
       <el-table-column prop="developer" label="默认研发" />
       <el-table-column prop="producer" label="默认产品"/>
       <el-table-column prop="tester" label="默认测试"/>

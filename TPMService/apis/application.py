@@ -58,7 +58,7 @@ def searchBykey():
         # 执行查询
         with connection.cursor() as cursor:
             # 按照条件进行查询
-            cursor.execute('SELECT * FROM `apps` WHERE `status`=0' + sql)
+            cursor.execute('SELECT P.title, A.* FROM apps AS A,products AS P WHERE A.productId = P.id and A.`status`=0' + sql)
             data = cursor.fetchall()
 
     # 按分页模版返回查询数据
