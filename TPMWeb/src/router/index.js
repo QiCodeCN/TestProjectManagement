@@ -55,16 +55,35 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/product',
+    path: '/settings',
     component: Layout,
-    redirect: '/product',
+    redirect: '/settings',
+    meta: { title: '基础管理', icon: 'dashboard' },
     children: [{
       path: 'product',
       name: 'Product',
       component: () => import('@/views/product/product'),
-      meta: { title: '产品线管理', icon: 'dashboard' }
-    }]
+      meta: { title: '项目产品分类', icon: 'dashboard' }
+    },
+    {
+      path: 'apps',
+      name: 'apps',
+      component: () => import('@/views/product/apps'),
+      meta: { title: '服务应用管理', icon: 'dashboard' }
+    }
+    ]
   },
+  // {
+  //   path: '/product',
+  //   component: Layout,
+  //   redirect: '/product',
+  //   children: [{
+  //     path: 'product',
+  //     name: 'Product',
+  //     component: () => import('@/views/product/product'),
+  //     meta: { title: '产品线管理', icon: 'dashboard' }
+  //   }]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
