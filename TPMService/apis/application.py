@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# application.py
 
 from flask import Blueprint
 from dbutils.pooled_db import PooledDB
@@ -81,6 +82,4 @@ def getProduct():
     # 按返回模版格式进行json结果返回
     response = format.resp_format_success
     response['data'] = data
-    return response
-
     return response

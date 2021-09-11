@@ -6,6 +6,7 @@ TPMWeb/yarn-debug.log*
 TPMWeb/yarn-error.log*
 TPMWeb/package-lock.json
 TPMWeb/tests/**/coverage/
+TPMService/configs/__pycache__/
 
 # Editor directories and files
 TPMWeb/.idea

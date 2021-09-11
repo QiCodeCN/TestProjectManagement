@@ -1,3 +1,4 @@
+# config.py
 
 # 数据库配置
 MYSQL_HOST= 'localhost'
