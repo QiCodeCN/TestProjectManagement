@@ -68,6 +68,88 @@ def searchBykey():
     response['total'] = total[0]['count']
     return response
 
+@app_application.route("/api/application/update",methods=['POST'])
+def product_update():
+    # 获取传递的数据，并转换成JSON
+    body = request.get_data()
+    body = json.loads(body)
+
+    # 定义默认返回体
+    resp_success = format.resp_format_success
+    resp_failed = format.resp_format_failed
+
+    # 判断必填参数
+    if 'appId' not in body:
+        resp_failed.message = '应用不能为空'
+        return resp_failed
+    elif 'tester' not in body:
+        resp_failed.message = '测试负责人不能为空'
+        return resp_failed
+    elif 'developer' not in body:
+        resp_failed.message = '测试负责人不能为空'
+        return resp_failed
+    elif 'producer' not in body:
+        resp_failed.message = '产品负责人不能为空'
+        return resp_failed
+
+    if not body.get('note'):
+        body['note'] = ''
+    if not body.get('cCEmail'):
+        body['cCEmail'] = ''
+    if not body.get('gitCode'):
+        body['gitCode'] = ''
+    if not body.get('wiki'):
+        body['wiki'] = ''
+    if not body.get('more'):
+        body['more'] = ''
+    if not body.get('creteUser'):
+        body['creteUser'] = ''
+    if not body.get('updateUser'):
+        body['updateUser'] = ''
+
+    # 使用连接池链接数据库
+    connection = pool.connection()
+
+    # 判断增加或是修改逻辑
+    with connection:
+        # 如果传的值有ID，那么进行修改操作，否则为新增数据
+        if 'id' in body and body['id'] != '':
+            with connection.cursor() as cursor:
+                # 拼接修改语句，由于应用名不可修改，不需要做重复校验appId
+                sql = "UPDATE `apps` SET `productId`=%s, `note`=%s,`tester`=%s,`developer`=%s,`producer`=%s,`cCEmail`=%s, " \
+                      "`gitCode`=%s, `wiki`=%s, `more`=%s, `updateUser`=%s, `updateDate`= NOW() WHERE id=%s"
+                cursor.execute(sql, (body["productId"], body["note"], body["tester"], body["developer"], body['producer'], body["cCEmail"],
+                                     body["gitCode"], body["wiki"], body["more"], body["updateUser"], body["id"]))
+                # 提交执行保存更新数据
+                connection.commit()
+        else:
+            # 新增需要判断appId是否重复
+            with connection.cursor() as cursor:
+                select = "SELECT * FROM `apps` WHERE `appId`=%s AND `status`=0"
+                cursor.execute(select, (body["appId"],))
+                result = cursor.fetchall()
+
+            # 有数据说明存在相同值，封装提示直接返回
+            if len(result) > 0:
+                resp_failed["code"] = 20001
+                resp_failed["message"] = "唯一编码keyCode已存在"
+                return resp_failed
+
+            with connection.cursor() as cursor:
+                # 拼接插入语句,并用参数化%s构造防止基本的SQL注入
+                # 其中id为自增，插入数据默认数据设置的当前时间
+                sql = "INSERT INTO `apps` (`appId`,`productId`,`note`,`tester`,`developer`,`producer`,`cCEmail`,`gitCode`" \
+                      ",`wiki`,`more`,`creteUser`,`updateUser`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                cursor.execute(sql, (body["appId"],body["productId"], body["note"], body["tester"], body["developer"], body['producer'],body["cCEmail"],
+                                     body["gitCode"],body["wiki"],body["more"],body["creteUser"],body["updateUser"]))
+                # 提交执行保存新增数据
+                connection.commit()
+
+        return resp_success
+
+
+
+
 @app_application.route("/api/application/product",methods=['GET'])
 def getProduct():
     # 使用连接池链接数据库
