@@ -55,6 +55,39 @@ export const constantRoutes = [
     }]
   },
   {
+    path: '/tmp',
+    component: Layout,
+    redirect: '/tmp',
+    meta: { title: '基础管理', icon: 'dashboard' },
+    children: [
+      {
+        path: 'test',
+        name: 'test',
+        component: () => import('@/views/test/index'),
+        meta: { title: '提测管理', icon: 'dashboard' }
+      },
+      {
+        path: 'commit',
+        name: 'commit',
+        hidden: true,
+        component: () => import('@/views/test/manger/commit'),
+        meta: { title: '需求提测', icon: 'dashboard' }
+      },
+      {
+        path: 'mytest',
+        name: 'mytest',
+        component: () => import('@/views/test/mydev'),
+        meta: { title: '我的提测', icon: 'dashboard' }
+      },
+      {
+        path: 'mydev',
+        name: 'mydev',
+        component: () => import('@/views/test/mydev'),
+        meta: { title: '我的测试', icon: 'dashboard' }
+      }
+    ]
+  },
+  {
     path: '/settings',
     component: Layout,
     redirect: '/settings',
@@ -73,18 +106,6 @@ export const constantRoutes = [
     }
     ]
   },
-  // {
-  //   path: '/product',
-  //   component: Layout,
-  //   redirect: '/product',
-  //   children: [{
-  //     path: 'product',
-  //     name: 'Product',
-  //     component: () => import('@/views/product/product'),
-  //     meta: { title: '产品线管理', icon: 'dashboard' }
-  //   }]
-  // },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

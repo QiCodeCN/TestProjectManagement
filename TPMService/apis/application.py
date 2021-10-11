@@ -45,7 +45,7 @@ def searchBykey():
 
     # 排序和页数拼接
     sql = sql +' ORDER BY `updateDate` DESC LIMIT {},{}'.format((currentPage-1)*pageSize, pageSize)
-    print(sql)
+    # print(sql)
 
     # 使用连接池链接数据库
     connection = pool.connection()
@@ -139,9 +139,9 @@ def product_update():
                 # 拼接插入语句,并用参数化%s构造防止基本的SQL注入
                 # 其中id为自增，插入数据默认数据设置的当前时间
                 sql = "INSERT INTO `apps` (`appId`,`productId`,`note`,`tester`,`developer`,`producer`,`cCEmail`,`gitCode`" \
-                      ",`wiki`,`more`,`creteUser`,`updateUser`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                      ",`wiki`,`more`,`createUser`,`updateUser`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 cursor.execute(sql, (body["appId"],body["productId"], body["note"], body["tester"], body["developer"], body['producer'],body["cCEmail"],
-                                     body["gitCode"],body["wiki"],body["more"],body["creteUser"],body["updateUser"]))
+                                     body["gitCode"],body["wiki"],body["more"],body["createUser"],body["updateUser"]))
                 # 提交执行保存新增数据
                 connection.commit()
 

@@ -86,8 +86,7 @@
                   v-for="item in options"
                   :key="item.id"
                   :label="item.title"
-                  :value="item.id"
-                >
+                  :value="item.id">
                   <span style="float: left">{{ item.keyCode }}</span>
                   <span style="float: right; color: #8492a6; font-size: 13px">{{ item.title }}</span>
                 </el-option>
