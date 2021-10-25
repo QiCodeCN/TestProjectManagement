@@ -26,3 +26,11 @@ export function apiAppsCommit(requestBody) {
   })
 }
 
+// 获取应用列表，可按照appid 或者 note模糊查询
+export function apiAppsIds(value) {
+  return request({
+    url: '/api/application/options?value=' + value,
+    method: 'get'
+  })
+}
+

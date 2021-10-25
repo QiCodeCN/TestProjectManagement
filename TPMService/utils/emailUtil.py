@@ -11,7 +11,7 @@ subject 邮件主题, 字符串
 contents 邮件内容，自定义 字符数组
 attachments 附件默认为空
 '''
-def sendEmail(receivers, subject,contents, attachments=[]):
+def sendEmail(receivers, subject, contents, attachments=[]):
 
 
     try:

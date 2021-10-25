@@ -68,6 +68,7 @@ def searchBykey():
     response['total'] = total[0]['count']
     return response
 
+
 @app_application.route("/api/application/update",methods=['POST'])
 def product_update():
     # 获取传递的数据，并转换成JSON
@@ -148,8 +149,6 @@ def product_update():
         return resp_success
 
 
-
-
 @app_application.route("/api/application/product",methods=['GET'])
 def getProduct():
     # 使用连接池链接数据库
@@ -164,4 +163,29 @@ def getProduct():
     # 按返回模版格式进行json结果返回
     response = format.resp_format_success
     response['data'] = data
+    return response
+
+
+@app_application.route("/api/application/options", methods=['GET'])
+def getOptionsForSelected():
+
+    value = request.args.get('value', '')
+    response = format.resp_format_success
+
+    connection = pool.connection()
+
+    with connection.cursor() as cursor:
+
+        # 先按appid模糊搜索，没有数据再按note搜索
+        sqlByAppId = "SELECT * FROM apps WHERE appId LIKE '%"+value+"%'"
+        cursor.execute(sqlByAppId)
+        dataByppId = cursor.fetchall()
+        if len(dataByppId) > 0 :
+            response['data'] = dataByppId
+        else:
+            sqlByNote = "SELECT * FROM apps WHERE note LIKE '%" + value + "%'"
+            cursor.execute(sqlByNote)
+            dataByNote = cursor.fetchall()
+            response['data'] = dataByNote
+
     return response

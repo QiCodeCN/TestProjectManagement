@@ -277,7 +277,7 @@ export default {
     commitApp() {
       // 上边form定义ref，验证通过if valid的方式判断
       this.$refs['appInfo'].validate((valid) => {
-        if (valid) {
+        if (valiop_userd) {
           this.appInfo.updateUser = this.op_user
           apiAppsCommit(this.appInfo).then(response => {
             // 如果request.js没有拦截即表示成功，给出对应提示和操作

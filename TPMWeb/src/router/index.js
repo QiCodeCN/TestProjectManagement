@@ -58,7 +58,7 @@ export const constantRoutes = [
     path: '/tmp',
     component: Layout,
     redirect: '/tmp',
-    meta: { title: '基础管理', icon: 'dashboard' },
+    meta: { title: '测试管理', icon: 'dashboard' },
     children: [
       {
         path: 'test',
