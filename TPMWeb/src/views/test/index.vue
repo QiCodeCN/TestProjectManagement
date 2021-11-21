@@ -30,17 +30,17 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
-            align="right">
-          </el-date-picker>
+            align="right"
+          />
         </el-form-item>
         <el-form-item label="测试状态">
           <el-select v-model="search.status" placeholder="请选择">
             <el-option value="" label="所有" />
-            <el-option key=1 label="已提测" value=1></el-option>
-            <el-option key=2 label="测试中" value=2></el-option>
-            <el-option key=3 label="通过" value=3></el-option>
-            <el-option key=4 label="失败" value=4></el-option>
-            <el-option key=9 label="废弃" value=9></el-option>
+            <el-option key="1" label="已提测" value="1" />
+            <el-option key="2" label="测试中" value="2" />
+            <el-option key="3" label="通过" value="3" />
+            <el-option key="4" label="失败" value="4" />
+            <el-option key="9" label="废弃" value="9" />
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -54,7 +54,7 @@
         <!--:data prop绑定{}中的key，label为自定义显示的列表头-->
         <el-table-column prop="appId" label="应用ID" />
         <el-table-column prop="title" label="提测标题" show-overflow-tooltip />
-        <el-table-column :formatter="formatStatus" prop="status" label="测试状态"/>
+        <el-table-column :formatter="formatStatus" prop="status" label="测试状态" />
         <el-table-column :formatter="formatType" prop="type" label="类型" />
         <el-table-column prop="developer" label="提测人" />
         <el-table-column prop="tester" label="测试人" />
@@ -63,16 +63,16 @@
         <el-table-column label="操作" width="300">
           <template slot-scope="scope">
             <!--<label>菜单逻辑判断一列</label>-->
-            <el-link type="primary" v-if="scope.row.status===1" @click="startTest(scope.row)">开始测试</el-link>
-            <el-link type="primary" v-if="scope.row.status===2" >添加结果</el-link>
-            <el-link type="primary" v-if="scope.row.status===3 || scope.row.status == 4" >查看报告</el-link>
-            <el-link type="primary" v-if="scope.row.status===9" >删除结果</el-link>
+            <el-link v-if="scope.row.status===1" type="primary" @click="startTest(scope.row)">开始测试</el-link>
+            <el-link v-if="scope.row.status===2" type="primary">添加结果</el-link>
+            <el-link v-if="scope.row.status===3 || scope.row.status == 4" type="primary">查看报告</el-link>
+            <el-link v-if="scope.row.status===9" type="primary">删除结果</el-link>
             <!--<label>菜单逻辑判断二列</label>-->
-            <el-divider direction="vertical"></el-divider>
-            <el-link type="primary" v-if="[1,2].includes(scope.row.status)">编辑提测</el-link>
-            <el-link type="primary" v-if="[3,4,9].includes(scope.row.status)">编辑结果</el-link>
-            <el-divider direction="vertical"></el-divider>
-            <el-link type="primary" >提测详情</el-link>
+            <el-divider direction="vertical" />
+            <el-link v-if="[1,2].includes(scope.row.status)" type="primary" @click="doUpdate(scope.row)">编辑提测</el-link>
+            <el-link v-if="[3,4,9].includes(scope.row.status)" type="primary">编辑结果</el-link>
+            <el-divider direction="vertical" />
+            <el-link type="primary">提测详情</el-link>
           </template>
         </el-table-column>
       </el-table>
@@ -118,7 +118,7 @@ export default {
           onClick(picker) {
             const end = new Date()
             const start = new Date() // 当前时间
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7) //单位毫秒加减计算
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7) // 单位毫秒加减计算
             picker.$emit('pick', [start, end])
           }
         }, {
@@ -220,6 +220,9 @@ export default {
     },
     doCommit() {
       this.$router.push({ name: 'commit', params: { action: 'ADD' }})
+    },
+    doUpdate(row) {
+      this.$router.push({ path: '/commit?action=UPDATE&id=' + row.id })
     },
     startTest() {
       console.log('开始测试')

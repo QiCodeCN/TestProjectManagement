@@ -1,10 +1,13 @@
 <template>
   <div class="app-container">
     <el-header>
-      <el-page-header @back="goBack" content="提测"/>
+      <el-page-header @back="goBack" :content="testAction==='UPDATE'?'修改提测':'新建提测'"/>
     </el-header>
     <el-main>
       <el-form :model="requestForm" :rules="requestRules" ref="ruleForm" label-width="100px" >
+        <el-form-item v-if="testAction==='UPDATE'" label="提测ID" prop="id">
+          <el-input v-model="requestForm.id" style="width: 350px" disabled=""></el-input>
+        </el-form-item>
         <el-form-item label="提测标题" prop="title">
           <el-input v-model="requestForm.title" placeholder="提测标题" style="width: 350px"></el-input>
         </el-form-item>
@@ -65,8 +68,10 @@
           <el-checkbox v-model="requestForm.isEmail" true-label="true">发送邮件</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">立即创建</el-button>
-          <el-button>取   消</el-button>
+          <!--<el-button type="primary" @click="onSubmit">{{testAction=='ADD'?'立即添加':'修改提测'}}</el-button>-->
+          <el-button v-if="testAction==='ADD'" type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button v-if="testAction==='UPDATE'" type="primary" @click="onSubmit">修改提测</el-button>
+          <el-button @click="onCancel">取   消</el-button>
         </el-form-item>
       </el-form>
     </el-main>
@@ -75,7 +80,7 @@
 
 <script>
 import { apiAppsIds } from '@/api/apps'
-import { reqCreate } from '@/api/test'
+import { reqCreate, apiTestInfo, reqUpdate } from '@/api/test'
 import store from '@/store'
 
 export default {
@@ -83,7 +88,8 @@ export default {
   data() {
     return {
       op_user: store.getters.name,
-      testAction: 'ADD',
+      testAction: '',
+      testId: '',
       appIdloading: false,
       requestForm: {
         id: undefined,
@@ -120,9 +126,9 @@ export default {
 
       },
       opsType: [
-        { label: '功能测试', value: '1' },
-        { label: '性能测试', value: '2' },
-        { label: '安全测试', value: '3' }
+        { label: '功能测试', value: 1 },
+        { label: '性能测试', value: 2 },
+        { label: '安全测试', value: 3 }
       ],
       appIdList: []
     }
@@ -130,12 +136,17 @@ export default {
   mounted() {
     if (this.$route.params.action) {
       this.testAction = this.$route.params.action
+    } else if (this.$route.query.action) {
+      this.testAction = this.$route.query.action
     }
-    console.log(this.testAction)
+    if (this.$route.query.id) {
+      this.testId = this.$route.query.id
+      this.getTestInfo()
+    }
   },
   methods: {
     goBack() {
-      this.$router.push('test')
+      this.$router.go(-1)
     },
     remoteMethod(query) {
       if (query !== '') {
@@ -171,7 +182,7 @@ export default {
             this.requestForm.gitCode = this.appIdList[it].gitCode
           }
           // 填写appName信息，用于邮件发送不再额外查询
-          this.requestForm.appName = this.appIdList[it].appId
+          this.requestForm.appName = this.appIdList[it].appName
         }
       }
     },
@@ -180,14 +191,24 @@ export default {
         if (valid) {
           if (this.testAction === 'ADD') {
             this.requestForm.id = undefined
-            this.requestForm.type = '1'
             this.requestForm.createUser = this.op_user
             this.requestForm.updateUser = this.op_user
             reqCreate(this.requestForm).then(response => {
               // 如果request.js没有拦截即表示成功，给出对应提示和操作
               this.$notify({
                 title: '成功',
-                message: this.testAction === 'ADD' ? '提测添加成功' : '提测修改成功',
+                message: '提测添加成功',
+                type: 'success'
+              })
+              // 回到列表页面
+              this.$router.push({ name: 'test', params: { needUp: 'true' }})
+            })
+          } else {
+            this.requestForm.updateUser = this.op_user
+            reqUpdate(this.requestForm).then(response => {
+              this.$notify({
+                title: '成功',
+                message: '提测修改成功',
                 type: 'success'
               })
               // 回到列表页面
@@ -197,6 +218,31 @@ export default {
         } else {
           return false
         }
+      })
+    },
+    onCancel() {
+      this.$router.push({ name: 'test' })
+    },
+    getTestInfo() {
+      apiTestInfo(this.testId).then(response => {
+        const data = response.data
+        this.requestForm.id = data.id
+        this.requestForm.title = data.title
+        this.requestForm.developer = data.developer
+        this.requestForm.tester = data.tester
+        this.requestForm.CcMail = data.CcMail
+        this.requestForm.version = data.version
+        this.requestForm.type = data.type
+        this.requestForm.scope = data.scope
+        this.requestForm.gitCode = data.gitCode
+        this.requestForm.wiki = data.wiki
+        this.requestForm.more = data.more
+        this.requestForm.appName = data.appName
+        this.requestForm.isEmail = false
+        this.remoteMethod(data.appName)
+        setTimeout(() => {
+          this.requestForm.appId = data.appId
+        }, 300)
       })
     }
   }

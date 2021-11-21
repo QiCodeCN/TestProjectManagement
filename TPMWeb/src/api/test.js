@@ -15,3 +15,31 @@ export function reqCreate(body) {
     data: body
   })
 }
+
+export function apiTestInfo(id) {
+  return request({
+    url: '/api/test/info',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function reqUpdate(body) {
+  return request({
+    url: '/api/test/update',
+    method: 'post',
+    data: body
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+

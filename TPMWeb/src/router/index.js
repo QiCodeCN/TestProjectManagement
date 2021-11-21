@@ -58,32 +58,32 @@ export const constantRoutes = [
     path: '/tmp',
     component: Layout,
     redirect: '/tmp',
-    meta: { title: '测试管理', icon: 'dashboard' },
+    meta: { title: '测试管理', icon: 'testmanger' },
     children: [
       {
-        path: 'test',
+        path: '/test',
         name: 'test',
         component: () => import('@/views/test/index'),
-        meta: { title: '提测管理', icon: 'dashboard' }
+        meta: { title: '提测管理', icon: 'request' }
       },
       {
-        path: 'commit',
+        path: '/commit',
         name: 'commit',
         hidden: true,
         component: () => import('@/views/test/manger/commit'),
-        meta: { title: '需求提测', icon: 'dashboard' }
+        meta: { title: '需求提测' }
       },
       {
         path: 'mytest',
         name: 'mytest',
         component: () => import('@/views/test/mydev'),
-        meta: { title: '我的提测', icon: 'dashboard' }
+        meta: { title: '我的提测', icon: 'mydev' }
       },
       {
         path: 'mydev',
         name: 'mydev',
         component: () => import('@/views/test/mydev'),
-        meta: { title: '我的测试', icon: 'dashboard' }
+        meta: { title: '我的测试', icon: 'mytest' }
       }
     ]
   },
@@ -91,18 +91,18 @@ export const constantRoutes = [
     path: '/settings',
     component: Layout,
     redirect: '/settings',
-    meta: { title: '基础管理', icon: 'dashboard' },
+    meta: { title: '基础管理', icon: '设置' },
     children: [{
       path: 'product',
       name: 'Product',
       component: () => import('@/views/product/product'),
-      meta: { title: '项目产品分类', icon: 'dashboard' }
+      meta: { title: '项目产品分类', icon: '项目管理' }
     },
     {
       path: 'apps',
       name: 'apps',
       component: () => import('@/views/product/apps'),
-      meta: { title: '服务应用管理', icon: 'dashboard' }
+      meta: { title: '服务应用管理', icon: '应用管理' }
     }
     ]
   },

@@ -10,7 +10,8 @@
           <el-input v-model="search.keyCode" placeholder="支持模糊查询" style="width: 200px;" clearable/>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" plain @click="searchProduct()">查询</el-button>
+          <el-button type="primary" plain @click="searchProduct()" icon="el-icon-search"></el-button>
+
         </el-form-item>
       </el-form>
       <el-button type="primary" icon="el-icon-plus" style="float:right" @click="dialogProduct()">新增</el-button>
