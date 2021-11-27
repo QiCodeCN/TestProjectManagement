@@ -44,23 +44,24 @@ def searchBykey():
         sql = sql + " AND R.updateDate >= '{}' and R.updateDate <= '{}' ".format(body['pickTime'][0],body['pickTime'][1])
 
     # 排序和页数拼接
-    sql = sql + ' ORDER BY R.updateDate DESC LIMIT {},{}'.format((currentPage - 1) * pageSize, pageSize)
-    print(sql)
-
+    sql_list = sql + ' ORDER BY R.updateDate DESC LIMIT {},{}'.format((currentPage - 1) * pageSize, pageSize)
+    sql_count = sql + ' ORDER BY R.updateDate DESC'
     # 使用连接池链接数据库
     connection = pool.connection()
 
     with connection:
         # 先查询总数
         with connection.cursor() as cursor:
-            count_select = 'SELECT COUNT(*) as `count` FROM request as R , apps as A where R.appId = A.id AND R.isDel=0' + sql
+            count_select = 'SELECT COUNT(*) as `count` FROM request as R , apps as A ' \
+                           'where R.appId = A.id AND R.isDel=0' + sql_count
             cursor.execute(count_select)
             total = cursor.fetchall()
 
         # 执行查询
         with connection.cursor() as cursor:
             # 按照条件进行查询
-            cursor.execute('SELECT A.appId,R.* FROM request as R , apps as A where R.appId = A.id AND R.isDel=0' + sql)
+            cursor.execute('SELECT A.appId,R.* FROM request as R , apps as A '
+                           'where R.appId = A.id AND R.isDel=0' + sql_list)
             data = cursor.fetchall()
 
     # 按分页模版返回查询数据
@@ -305,5 +306,40 @@ def updateReqeust():
                     connection.commit()
             else:
                 print('不发送邮件！')
+
+    return resp_success
+
+@test_manager.route("/api/test/change", methods=['POST'])
+def changeStatus():
+    # 初始化返回对象
+    resp_success = format.resp_format_success
+    resp_failed = format.resp_format_failed
+
+    # 获取请求参数Body
+    reqbody = json.loads(request.get_data())
+
+    if 'id' not in reqbody:
+        resp_failed['message'] = '提测ID不能为空'
+        return resp_failed
+    elif 'status' not in reqbody:
+        resp_failed['message'] = '更改的状态不能为空'
+        return resp_failed
+
+    # 重新链接数据库
+    connection = pool.connection()
+    with connection.cursor() as cursor:
+        # 判断状态流转的操作，如果status==start为开始测试，status==delete 软删除
+        if reqbody['status'] == 'start':
+            sql = "UPDATE `request` SET `status`=2 WHERE id=%s"
+            resp_success['message'] = '状态流转成功，进入测试阶段。'
+        elif reqbody['status'] == 'delete':
+            sql = "UPDATE `request` SET `isDel`=1 WHERE id=%s"
+            resp_success['message'] = '提测已被删除!'
+        else:
+            resp_failed.message = '状态标记错误'
+            return resp_failed
+
+        cursor.execute(sql, reqbody['id'])
+        connection.commit()
 
     return resp_success

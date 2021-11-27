@@ -50,7 +50,7 @@
       <el-button type="primary" icon="el-icon-plus" style="float:right" @click="doCommit()">新建提测</el-button>
     </div>
     <div>
-      <el-table :data="testData">
+      <el-table :data="testData" v-loading="loading">
         <!--:data prop绑定{}中的key，label为自定义显示的列表头-->
         <el-table-column prop="appId" label="应用ID" />
         <el-table-column prop="title" label="提测标题" show-overflow-tooltip />
@@ -66,13 +66,13 @@
             <el-link v-if="scope.row.status===1" type="primary" @click="startTest(scope.row)">开始测试</el-link>
             <el-link v-if="scope.row.status===2" type="primary">添加结果</el-link>
             <el-link v-if="scope.row.status===3 || scope.row.status == 4" type="primary">查看报告</el-link>
-            <el-link v-if="scope.row.status===9" type="primary">删除结果</el-link>
+            <el-link v-if="scope.row.status===9" type="primary" @click="deleteTest(scope.row)">删除结果</el-link>
             <!--<label>菜单逻辑判断二列</label>-->
             <el-divider direction="vertical" />
             <el-link v-if="[1,2].includes(scope.row.status)" type="primary" @click="doUpdate(scope.row)">编辑提测</el-link>
             <el-link v-if="[3,4,9].includes(scope.row.status)" type="primary">编辑结果</el-link>
             <el-divider direction="vertical" />
-            <el-link type="primary">提测详情</el-link>
+            <el-link type="primary" @click="showRequestInfo(scope.row)">提测详情</el-link>
           </template>
         </el-table-column>
       </el-table>
@@ -90,12 +90,27 @@
         @current-change="handleCurrentChange"
       />
     </div>
+    <div>
+      <el-dialog :title="requestInfo.title" :visible.sync="requestInfoVisible">
+        <el-descriptions :column="2" border>
+          <el-descriptions-item label="提测人">{{requestInfo.developer}}</el-descriptions-item>
+          <el-descriptions-item label="测试人">{{requestInfo.tester}}</el-descriptions-item>
+          <el-descriptions-item label="提测版本">{{requestInfo.version}}</el-descriptions-item>
+          <el-descriptions-item label="提测类型">{{formatInfoType(requestInfo.type)}}</el-descriptions-item>
+          <el-descriptions-item label="应用ID" :span="2">{{requestInfo.appId}}</el-descriptions-item>
+          <el-descriptions-item label="提测说明" :span="2">{{requestInfo.scope}}</el-descriptions-item>
+          <el-descriptions-item label="代码地址" :span="2">{{requestInfo.gitCode}}</el-descriptions-item>
+          <el-descriptions-item label="测试文档" :span="2">{{requestInfo.wiki}}</el-descriptions-item>
+          <el-descriptions-item label="更多信息" :span="2">{{requestInfo.more}}</el-descriptions-item>
+        </el-descriptions>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
 <script>
 import { apiAppsProduct } from '@/api/apps'
-import { apiTestSearch } from '@/api/test.js'
+import { apiTestSearch, changeStatus } from '@/api/test.js'
 import moment from 'moment'
 
 export default {
@@ -137,7 +152,10 @@ export default {
         pageSize: 10,
         currentPage: 1,
         total: 0
-      }
+      },
+      loading: false,
+      requestInfoVisible: false,
+      requestInfo: {}
     }
   },
   mounted() {
@@ -194,6 +212,7 @@ export default {
       })
     },
     searchClick() {
+      this.loading = true
       const body = {
         pageSize: this.pageValues.pageSize,
         currentPage: this.pageValues.currentPage,
@@ -209,6 +228,9 @@ export default {
         this.testData = response.data
         this.pageValues.total = response.total
       })
+      setTimeout(() => {
+        this.loading = false
+      }, 300)
     },
     handleSizeChange(val) {
       this.pageValues.pageSize = val
@@ -224,8 +246,47 @@ export default {
     doUpdate(row) {
       this.$router.push({ path: '/commit?action=UPDATE&id=' + row.id })
     },
-    startTest() {
-      console.log('开始测试')
+    startTest(row) {
+      const reqBody = {
+        id: row.id,
+        status: 'start'
+      }
+      changeStatus(reqBody).then(resp => {
+        this.$message({
+          message: resp.message,
+          type: 'success'
+        })
+        this.searchClick()
+      })
+    },
+    deleteTest(row) {
+      const reqBody = {
+        id: row.id,
+        status: 'delete'
+      }
+      changeStatus(reqBody).then(resp => {
+        this.$message({
+          message: resp.message,
+          type: 'success'
+        })
+        this.searchClick()
+      })
+    },
+    showRequestInfo(row) {
+      this.requestInfo = row
+      this.requestInfoVisible = true
+    },
+    formatInfoType(type) {
+      switch (type) {
+        case 1:
+          return '功能测试'
+        case 2:
+          return '性能测试'
+        case 3:
+          return '安全测试'
+        default:
+          return '未知状态'
+      }
     }
   }
 }

@@ -81,16 +81,16 @@ def product_update():
 
     # 判断必填参数
     if 'appId' not in body:
-        resp_failed.message = '应用不能为空'
+        resp_failed['message'] = '应用不能为空'
         return resp_failed
     elif 'tester' not in body:
-        resp_failed.message = '测试负责人不能为空'
+        resp_failed['message'] = '测试负责人不能为空'
         return resp_failed
     elif 'developer' not in body:
-        resp_failed.message = '测试负责人不能为空'
+        resp_failed['message'] = '测试负责人不能为空'
         return resp_failed
     elif 'producer' not in body:
-        resp_failed.message = '产品负责人不能为空'
+        resp_failed['message'] = '产品负责人不能为空'
         return resp_failed
 
     if not body.get('note'):

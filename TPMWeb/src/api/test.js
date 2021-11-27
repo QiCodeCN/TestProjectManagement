@@ -32,14 +32,11 @@ export function reqUpdate(body) {
   })
 }
 
-
-
-
-
-
-
-
-
-
-
+export function changeStatus(body) {
+  return request({
+    url: '/api/test/change',
+    method: 'post',
+    data: body
+  })
+}
 

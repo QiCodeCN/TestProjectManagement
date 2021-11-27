@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "axios": "0.21.1",
-    "element-ui": "2.13.0",
+    "element-ui": "2.15.17",
     "moment": "2.29.1",
     "js-cookie": "2.2.0",
     "normalize.css": "7.0.0",
