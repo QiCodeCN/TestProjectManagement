@@ -74,6 +74,13 @@ export const constantRoutes = [
         meta: { title: '需求提测' }
       },
       {
+        path: '/report',
+        name: 'report',
+        hidden: true,
+        component: () => import('@/views/test/manger/report'),
+        meta: { title: '测试报告' }
+      },
+      {
         path: 'mytest',
         name: 'mytest',
         component: () => import('@/views/test/mydev'),
@@ -105,6 +112,17 @@ export const constantRoutes = [
       meta: { title: '服务应用管理', icon: '应用管理' }
     }
     ]
+  },
+  {
+    path: '/upload',
+    component: Layout,
+    redirect: '/upload',
+    children: [{
+      path: 'upload',
+      name: 'Upload',
+      component: () => import('@/views/demo/uploadDemo'),
+      meta: { title: '文件上传Demo' }
+    }]
   },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

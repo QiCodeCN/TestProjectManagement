@@ -64,7 +64,7 @@
           <template slot-scope="scope">
             <!--<label>菜单逻辑判断一列</label>-->
             <el-link v-if="scope.row.status===1" type="primary" @click="startTest(scope.row)">开始测试</el-link>
-            <el-link v-if="scope.row.status===2" type="primary">添加结果</el-link>
+            <el-link v-if="scope.row.status===2" type="primary" @click="doReport()">添加结果</el-link>
             <el-link v-if="scope.row.status===3 || scope.row.status == 4" type="primary">查看报告</el-link>
             <el-link v-if="scope.row.status===9" type="primary" @click="deleteTest(scope.row)">删除结果</el-link>
             <!--<label>菜单逻辑判断二列</label>-->
@@ -287,6 +287,9 @@ export default {
         default:
           return '未知状态'
       }
+    },
+    doReport() {
+      this.$router.push({ name: 'report', params: { action: 'ADD' }})
     }
   }
 }

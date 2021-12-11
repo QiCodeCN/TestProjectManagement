@@ -5,10 +5,21 @@ from flask import Blueprint
 from dbutils.pooled_db import PooledDB
 from configs import config, format
 
+
 from flask import request
 import pymysql.cursors
 import json
 from utils.emailUtil import sendEmail
+
+import os
+from wtforms import Form,FileField
+from flask import send_from_directory
+from flask_wtf.file import FileRequired,FileAllowed
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import CombinedMultiDict
+
+class fileForm(Form):
+    file = FileField(validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'pdf', 'zip'])])
 
 # 使用数据库连接池的方式链接数据库，提高资源利用率
 pool = PooledDB(pymysql, mincached=2, maxcached=5,host=config.MYSQL_HOST, port=config.MYSQL_PORT,
@@ -343,3 +354,36 @@ def changeStatus():
         connection.commit()
 
     return resp_success
+
+@test_manager.route("/api/report/upload",methods=['POST'])
+def uploadFile():
+    # 初始化返回对象
+    resp_success = format.resp_format_success
+    resp_failed = format.resp_format_failed
+
+    file_form = fileForm(CombinedMultiDict([request.form, request.files]))
+    if file_form.validate():
+        # 保存文件的相对路径
+        save_path = os.path.join(os.path.abspath(os.path.dirname(__file__)).split('TPMService')[0], 'TPMService/static')
+        # 获取文件
+        attfile = request.files.get('file')
+        file_name = secure_filename(attfile.filename)
+        attfile.save(os.path.join(save_path, file_name))
+
+        resp_success['data'] = {"fileName": file_name}
+        return resp_success
+    else:
+        resp_failed['message'] = '文件格式不符合预期'
+        return resp_failed
+
+
+@test_manager.route("/api/file/download",methods=['GET'])
+def downloadFile():
+    fimeName = request.args.get('name')
+
+    # 保存文件的相对路径
+    save_path = os.path.join(os.path.abspath(os.path.dirname(__file__)).split('TPMService')[0], 'TPMService/static')
+
+    result = send_from_directory(save_path, fimeName)
+
+    return  result

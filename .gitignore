@@ -22,3 +22,4 @@ TPMService/.idea/
 TPMService/__pycache__/
 TPMService/apis/__pycache__/
 TPMService/venv/
+TPMService/static
