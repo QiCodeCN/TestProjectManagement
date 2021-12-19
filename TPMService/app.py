@@ -25,15 +25,15 @@ def request_entity_too_large(err):
     resp_failed["message"] = '文件超出大小限制10M'
     return resp_failed
 
-# @app.after_request
-# def after_request(response):
-#     if response.status_code != 200:
-#         headers = {'content-type': 'application/json'}
-#         res = make_response(format.resp_format_failed)
-#         res.headers = headers
-#
-#         return res
-#     return response
+@app.after_request
+def after_request(response):
+    if response.status_code != 200:
+        headers = {'content-type': 'application/json'}
+        res = make_response(format.resp_format_failed)
+        res.headers = headers
+
+        return res
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)

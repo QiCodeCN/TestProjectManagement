@@ -181,7 +181,7 @@ export default {
           if (!this.requestForm.gitCode) {
             this.requestForm.gitCode = this.appIdList[it].gitCode
           }
-          // 填写appName信息，用于邮件发送不再额外查询
+          // 填写apreqCreatepName信息，用于邮件发送不再额外查询
           this.requestForm.appName = this.appIdList[it].appName
         }
       }

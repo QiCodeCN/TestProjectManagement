@@ -3,16 +3,17 @@
     <el-form>
       <el-form-item label="实现一（自动上传）" prop="test_file">
         <el-upload
-          ref="fileOne"
+          ref="upload"
           :limit="1"
           :file-list="fileList"
           :auto-upload="true"
           action="http://127.0.0.1:5000/api/report/upload"
           :on-success="uploadSuccess"
           :on-error="uploadErrors"
+          :show-file-list="false"
         >
           <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png/zip/pdf文件，且不超过10M</div>
+          <div slot="tip" class="el-upload__tip">{{tips}}</div>
         </el-upload>
       </el-form-item>
       <el-form-item label="实现二（自定义上传）" prop="test_file">
@@ -39,7 +40,8 @@ export default {
   data() {
     return {
       fileList: [],
-      fileNanme: ''
+      fileNanme: '',
+      tips: '只能上传jpg/png/zip/pdf文件，且不超过10M'
     }
   },
   methods: {
@@ -56,6 +58,8 @@ export default {
           type: 'success'
         })
       }
+      this.$refs.upload.clearFiles()
+      this.tips = file.name
     },
     uploadErrors(err, file, fileList) {
       this.$message({

@@ -64,13 +64,13 @@
           <template slot-scope="scope">
             <!--<label>菜单逻辑判断一列</label>-->
             <el-link v-if="scope.row.status===1" type="primary" @click="startTest(scope.row)">开始测试</el-link>
-            <el-link v-if="scope.row.status===2" type="primary" @click="doReport()">添加结果</el-link>
-            <el-link v-if="scope.row.status===3 || scope.row.status == 4" type="primary">查看报告</el-link>
+            <el-link v-if="scope.row.status===2" type="primary" @click="doReport(scope.row)">添加结果</el-link>
+            <el-link v-if="scope.row.status===3 || scope.row.status == 4" type="primary" @click="showReportInfo(scope.row)">查看报告</el-link>
             <el-link v-if="scope.row.status===9" type="primary" @click="deleteTest(scope.row)">删除结果</el-link>
             <!--<label>菜单逻辑判断二列</label>-->
             <el-divider direction="vertical" />
             <el-link v-if="[1,2].includes(scope.row.status)" type="primary" @click="doUpdate(scope.row)">编辑提测</el-link>
-            <el-link v-if="[3,4,9].includes(scope.row.status)" type="primary">编辑结果</el-link>
+            <el-link v-if="[3,4,9].includes(scope.row.status)" type="primary" @click="updateReport(scope.row)">编辑结果</el-link>
             <el-divider direction="vertical" />
             <el-link type="primary" @click="showRequestInfo(scope.row)">提测详情</el-link>
           </template>
@@ -102,6 +102,22 @@
           <el-descriptions-item label="代码地址" :span="2">{{requestInfo.gitCode}}</el-descriptions-item>
           <el-descriptions-item label="测试文档" :span="2">{{requestInfo.wiki}}</el-descriptions-item>
           <el-descriptions-item label="更多信息" :span="2">{{requestInfo.more}}</el-descriptions-item>
+        </el-descriptions>
+      </el-dialog>
+    </div>
+    <div>
+      <el-dialog :title="'[测试报告]' + reportInfo.title" :visible.sync="reportInfoVisible">
+        <el-descriptions :column="1" border>
+          <el-descriptions-item label="测试结果">{{formatReportInfoStatus(reportInfo.status)}}</el-descriptions-item>
+          <el-descriptions-item label="测试结论">{{reportInfo.test_desc}}</el-descriptions-item>
+          <el-descriptions-item label="风险提示">{{reportInfo.test_risks}}</el-descriptions-item>
+          <el-descriptions-item label="测试内容">{{reportInfo.test_cases}}</el-descriptions-item>
+          <el-descriptions-item label="发现缺陷">{{reportInfo.test_bugs}}</el-descriptions-item>
+          <el-descriptions-item v-if="reportInfo.test_file !==''" label="附件">
+            <a :href="'http://127.0.0.1:5000/api/file/download?name='+reportInfo.test_file">{{reportInfo.test_file}}</a>
+          </el-descriptions-item>
+          <el-descriptions-item label="备注">{{reportInfo.test_note}}</el-descriptions-item>
+          <el-descriptions-item label="已发邮件">{{reportInfo.test_email===1?'已发送':'未发送或失败'}}</el-descriptions-item>
         </el-descriptions>
       </el-dialog>
     </div>
@@ -155,7 +171,9 @@ export default {
       },
       loading: false,
       requestInfoVisible: false,
-      requestInfo: {}
+      requestInfo: {},
+      reportInfoVisible: false,
+      reportInfo: {}
     }
   },
   mounted() {
@@ -240,8 +258,8 @@ export default {
       this.pageValues.currentPage = val
       this.searchClick()
     },
-    doCommit() {
-      this.$router.push({ name: 'commit', params: { action: 'ADD' }})
+    doCommit(row) {
+      this.$router.push({ path: '/commit?action=ADD' })
     },
     doUpdate(row) {
       this.$router.push({ path: '/commit?action=UPDATE&id=' + row.id })
@@ -288,8 +306,24 @@ export default {
           return '未知状态'
       }
     },
-    doReport() {
-      this.$router.push({ name: 'report', params: { action: 'ADD' }})
+    doReport(row) {
+      this.$router.push({ name: 'report', params: { action: 'ADD', id: row.id }})
+    },
+    updateReport(row) {
+      this.$router.push({ name: 'report', params: { action: 'UPDATE', id: row.id }})
+    },
+    showReportInfo(row) {
+      this.reportInfo = row
+      this.reportInfoVisible = true
+    },
+    formatReportInfoStatus(status) {
+      if (status === 3) {
+        return '测试通过'
+      } else if (status === 4) {
+        return '测试失败'
+      } else if (status === 9) {
+        return '测试废弃'
+      }
     }
   }
 }
