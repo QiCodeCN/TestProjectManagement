@@ -113,17 +113,24 @@ export const constantRoutes = [
     }
     ]
   },
-  // {
-  //   path: '/upload',
-  //   component: Layout,
-  //   redirect: '/upload',
-  //   children: [{
-  //     path: 'upload',
-  //     name: 'Upload',
-  //     component: () => import('@/views/demo/uploadDemo'),
-  //     meta: { title: '文件上传Demo' }
-  //   }]
-  // },
+  {
+    path: '/demo',
+    component: Layout,
+    redirect: '/demo',
+    meta: { title: '演示Demo' },
+    children: [{
+      path: 'upload',
+      name: 'Upload',
+      component: () => import('@/views/demo/uploadDemo'),
+      meta: { title: '文件上传Demo' }
+    },
+    {
+      path: 'chart',
+      name: 'chart',
+      component: () => import('@/views/demo/echartsDemo'),
+      meta: { title: 'Echarts Demo' }
+    }]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

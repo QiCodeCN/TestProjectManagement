@@ -4,6 +4,7 @@ from apis.user import app_user
 from apis.product import app_product
 from apis.application import app_application
 from apis.testmanager import test_manager
+from apis.dashboard import test_dashboard
 from flask_cors import CORS
 from configs import format
 from flask import make_response
@@ -15,6 +16,7 @@ app.register_blueprint(app_user)
 app.register_blueprint(app_product)
 app.register_blueprint(app_application)
 app.register_blueprint(test_manager)
+app.register_blueprint(test_dashboard)
 
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 

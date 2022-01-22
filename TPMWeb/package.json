@@ -16,9 +16,10 @@
   },
   "dependencies": {
     "axios": "0.21.1",
-    "element-ui": "2.15.17",
-    "moment": "2.29.1",
+    "echarts": "^5.2.2",
+    "element-ui": "2.15.6",
     "js-cookie": "2.2.0",
+    "moment": "2.29.1",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
