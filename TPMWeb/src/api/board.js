@@ -7,3 +7,11 @@ export function requestStacked(data) {
     data
   })
 }
+
+export function requestMetaData(data) {
+  return request({
+    url: '/api/dashboard/metadata',
+    method: 'post',
+    data
+  })
+}
