@@ -59,7 +59,7 @@ jupyterlab-server==2.6.0
 kaitaistruct==0.9
 ldap3==2.8.1
 logzero==1.6.3
-lxml==4.5.2
+lxml==4.6.5
 MarkupSafe==1.1.1
 matplotlib-inline==0.1.2
 mistune==0.8.4
