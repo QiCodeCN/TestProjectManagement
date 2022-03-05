@@ -63,7 +63,7 @@ lxml==4.5.2
 MarkupSafe==1.1.1
 matplotlib-inline==0.1.2
 mistune==0.8.4
-mitmproxy==6.0.2
+mitmproxy==7.0.3
 mongoengine==0.20.0
 msgpack==1.0.2
 mysqlclient==2.1.0
