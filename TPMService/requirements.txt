@@ -43,7 +43,7 @@ hpack==4.0.0
 hyperframe==6.0.0
 idna==2.9
 ipykernel==5.5.5
-ipython==7.24.1
+ipython==7.31.1
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.18.0
