@@ -53,7 +53,7 @@ jsonschema==3.2.0
 jupyter-client==6.1.12
 jupyter-core==4.7.1
 jupyter-server==1.8.0
-jupyterlab==3.0.16
+jupyterlab==3.0.17
 jupyterlab-pygments==0.1.2
 jupyterlab-server==2.6.0
 kaitaistruct==0.9
