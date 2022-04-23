@@ -35,7 +35,7 @@ def sendEmail(receivers, subject, contents, attachments=[]):
 
 if __name__ == "__main__":
     # 测试发送服务
-    receivers = ['zyueqi@qq.com', 'daqigroup@mrzcode.com']
+    receivers = ['test@qq.com', 'daqigroup@mrzcode.com']
     subject = 'DaQi工具类测试'
     body = '简单的问题内容体'
-    sendEmail(receivers,subject,[body])
+    sendEmail(receivers, subject, [body])

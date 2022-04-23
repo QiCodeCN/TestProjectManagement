@@ -10,5 +10,5 @@ MYSQL_PASSWORD = 'mrzcode'
 
 MAIL_HOST = "smtp.exmail.qq.com"
 MAIL_PORT = 465
-MAIL_USER = "daqi@mrzcode.com"
-MAIL_PASSWORD = "Test@2021"
+MAIL_USER = "用户邮箱"
+MAIL_PASSWORD = "用户邮箱密码"

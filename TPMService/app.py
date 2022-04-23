@@ -7,7 +7,7 @@ from apis.testmanager import test_manager
 from apis.dashboard import test_dashboard
 from flask_cors import CORS
 from configs import format
-from flask import make_response
+from flask import make_response, render_template
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -37,6 +37,11 @@ def after_request(response):
         return res
     return response
 
+@app.route('/')
+def index():
+    return render_template("index.html")
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(port=8086)
 
