@@ -18,6 +18,12 @@ from flask_wtf.file import FileRequired,FileAllowed
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
 
+'''
+@Author: Zhang Qi
+@Copyright: 博客&公众号《大奇测试开发》
+@Describe: 测试管理接口
+'''
+
 class fileForm(Form):
     file = FileField(validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'pdf', 'zip'])])
 

@@ -9,6 +9,12 @@ from flask import request
 import pymysql.cursors
 import json
 
+'''
+@Author: Zhang Qi
+@Copyright: 博客&公众号《大奇测试开发》
+@Describe: 报表统计接口
+'''
+
 # 使用数据库连接池的方式链接数据库，提高资源利用率
 pool = PooledDB(pymysql, mincached=2, maxcached=5, host=config.MYSQL_HOST, port=config.MYSQL_PORT,
                 user=config.MYSQL_USER, passwd=config.MYSQL_PASSWORD, database=config.MYSQL_DATABASE,

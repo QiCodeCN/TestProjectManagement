@@ -1,6 +1,11 @@
 import request from '@/utils/request'
 
-// 调用信息查询结果
+/**
+ * 调用信息查询结果
+ * @Author 大奇
+ * @WeChat mrzcode
+ */
+
 export function apiProductList() {
   return request({
     url: '/api/product/list',

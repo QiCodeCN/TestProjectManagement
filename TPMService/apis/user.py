@@ -5,6 +5,12 @@ import json
 
 from flask import Blueprint
 
+'''
+@Author: Zhang Qi
+@Copyright: 博客&公众号《大奇测试开发》
+@Describe: 用户登录接口
+'''
+
 app_user = Blueprint("app_user", __name__)
 
 @app_user.route("/api/user/login",methods=['POST'])

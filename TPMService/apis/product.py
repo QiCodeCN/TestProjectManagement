@@ -6,6 +6,12 @@ import pymysql.cursors
 from flask import request
 import json
 
+'''
+@Author: Zhang Qi
+@Copyright: 博客&公众号《大奇测试开发》
+@Describe: 产品管理接口
+'''
+
 app_product = Blueprint("app_product", __name__)
 
 # 使用用户名密码创建数据库链接

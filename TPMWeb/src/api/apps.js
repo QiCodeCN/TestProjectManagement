@@ -1,6 +1,11 @@
 import request from '@/utils/request'
 
-// 应用搜索接口
+/**
+ * 应用搜索服务接口
+ * @Author 大奇
+ * @WeChat mrzcode
+ */
+
 export function apiAppsSearch(requestBody) {
   return request({
     url: '/api/application/search',
