@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@antv/g2plot": "^2.4.7",
-    "axios": "0.21.2",
+    "axios": "0.21.1",
     "echarts": "^5.2.2",
     "element-ui": "2.15.6",
     "js-cookie": "2.2.0",
