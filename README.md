@@ -1,11 +1,52 @@
 
 <img src="/TPMWeb/public/image/banner.jpeg" width="601" height="256" alt="微信小程序"/><br/>
 
+<p align="center">
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/ElemeFE/element">
+    <img src="https://img.shields.io/badge/element--ui-2.15.6-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+</p>
+
 # TPM提测平台
 背景源于多年前的团队的一个需求，这里重新利用最新开箱即用的前后端框架重新实现出来，并配有系列开发分享文章，宗旨是为做想测试开发和或自己想实现个小工具平台，而没有练手实战项目的同学提供一份的学习参考资料，希望对需要的人有些许帮助。
 
+[在线体验](http://tpm.mrzcode.com/)
+
 # 前后端服务
 代码全部放在一个Git项目上了，但服务分为独立的前端和后端服务，同时也给出了对应SQL数据库创表语句。
+
+## SQL
+数据使用的Mysql，版本建议5.7+，本项目中使用的是8.0版本，SQL文件夹中分别提供的提测平台用到的几张表
+- products.sql  产品/项目表
+- apps.sql      应用表
+- request.sql   提测需求和报告信息表
+
+## TPMService
+后端服务，使用的是 Python Flask框架，Pyton版本是3.x，同样本项目讲解的是需求应用的部分，至于更多内容建议学习官网 [英文](https://flask.palletsprojects.com/en/2.0.x/) [中文](https://dormousehole.readthedocs.io/en/latest/)，英文好的强力推荐阅读英文官方版本，中文的翻译可能是老版本，相关内容有些滞后。
+
+### 如何运行
+
+```bash
+# 克隆项目
+git clone https://github.com/mrzcode/TestProjectManagement.git
+
+# 进入项目目录 或 用WebStorm等IDE工具导入前端项目
+cd TPMService
+
+# 安装依赖
+pip3 install -r requirements.txt
+
+# 启动服务 或者 PyCharm等IDE配置运行
+python3 app.py
+
+```
+
 ## TPMWeb
 前端服务，使用的是开箱即用的 [Vue-element-admin](https://github.com/PanJiaChen/vue-admin-template)基础template版本，它还有个amdin版本有很多综合页面可以进行参考，基础组件应用上使用的 [Element ui](https://element.eleme.io/#/zh-CN)，这里需要注意的是你代码中使用的是Vue2.x版本，如果你是刚刚开始跟学这个项目，可以尝试将这些都升级到3.x进行练习开发。
 
@@ -35,31 +76,6 @@ npm install --registry=https://registry.npm.taobao.org
 ### 感谢
 这里鸣谢 Vue-element-admin个人 和 element ui团队的无私奉献，才让前端的开发更简单。
 
-## TPMService
-后端服务，使用的是 Python Flask框架，Pyton版本是3.x，同样本项目讲解的是需求应用的部分，至于更多内容建议学习官网 [英文](https://flask.palletsprojects.com/en/2.0.x/) [中文](https://dormousehole.readthedocs.io/en/latest/)，英文好的强力推荐阅读英文官方版本，中文的翻译可能是老版本，相关内容有些滞后。
-
-### 如何运行
-
-```bash
-# 克隆项目
-git clone https://github.com/mrzcode/TestProjectManagement.git
-
-# 进入项目目录 或 用WebStorm等IDE工具导入前端项目
-cd TPMService
-
-# 安装依赖
-pip3 install -r requirements.txt
-
-# 启动服务 或者 PyCharm等IDE配置运行
-python3 app.py
-
-```
-
-## SQL
-数据使用的Mysql，版本建议5.7+，本项目中使用的是8.0版本，SQL文件夹中分别提供的提测平台用到的几张表
-- products.sql  产品/项目表
-- apps.sql      应用表
-- request.sql   提测需求和报告信息表
 
 # 系列教程文章
 ## 公众号发布
