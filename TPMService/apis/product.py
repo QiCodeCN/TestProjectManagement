@@ -5,6 +5,7 @@ from flask import Blueprint
 import pymysql.cursors
 from flask import request
 import json
+from configs import config
 
 '''
 @Author: Zhang Qi
@@ -17,10 +18,10 @@ app_product = Blueprint("app_product", __name__)
 # 使用用户名密码创建数据库链接
 # ​PyMySQL使用文档  https://pymysql.readthedocs.io
 def connectDB():
-    connection = pymysql.connect(host='localhost',   # 数据库IP地址或链接域名
-                             user='mrzcode',     # 设置的具有增改查权限的用户
-                             password='mrzcode', # 用户对应的密码
-                             database='TPMStore',# 数据表
+    connection = pymysql.connect(host=config.MYSQL_HOST,   # 数据库IP地址或链接域名
+                             user=config.MYSQL_USER,     # 设置的具有增改查权限的用户
+                             password=config.MYSQL_PASSWORD, # 用户对应的密码
+                             database=config.MYSQL_DATABASE,# 数据表
                              charset='utf8mb4',  # 字符编码
                              cursorclass=pymysql.cursors.DictCursor) # 结果作为字典返回游标
     # 返回新的书库链接对象
