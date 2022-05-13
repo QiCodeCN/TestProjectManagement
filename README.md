@@ -123,6 +123,9 @@ npm install --registry=https://registry.npm.taobao.org
 - [阶段小结二：Element Vue开箱即用框架使用](https://mp.weixin.qq.com/s/c1GXsFP2D_ji3dvBZ_PAlA)
 - [阶段小结三：开发回顾和内容梳理](https://mp.weixin.qq.com/s/iT7440izmXH3bypz5Omm-g)
 
+**补充篇**
+- [补充一：前后端服务部署正式环境的方案实践](https://mp.weixin.qq.com/s/RpHtav-hV4ra8_mck1WYIA)
+
 
 ## 纯享版
 计划中重新排版存粹的教程版本，todo 敬请期待！
