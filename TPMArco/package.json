@@ -39,6 +39,7 @@
     "echarts": "^5.2.2",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.9",
     "query-string": "^7.0.1",

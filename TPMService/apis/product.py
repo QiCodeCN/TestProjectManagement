@@ -6,6 +6,7 @@ import pymysql.cursors
 from flask import request
 import json
 from configs import config
+from dbutils.pooled_db import PooledDB
 
 '''
 @Author: Zhang Qi
@@ -44,14 +45,14 @@ def product_search():
     if keyCode is not None:
         sql = sql + " AND `keyCode` LIKE '%{}%'".format(keyCode)
 
-    # 排序最后拼接
+    # 排序最后拼接(分页查询）
     sql = sql + " ORDER BY `update` DESC"
 
     connection = connectDB()
+
     # 使用python的with..as控制流语句（相当于简化的try except finally）
     with connection.cursor() as cursor:
         # 按照条件进行查询
-        print(sql)
         cursor.execute(sql)
         data = cursor.fetchall()
 
@@ -63,8 +64,59 @@ def product_search():
 
     return resp_data
 
+@app_product.route("/api/product/searchPage",methods=['GET'])
+def product_search_page():
+    # 获取title和keyCode
+    title = request.args.get('title')
+    keyCode = request.args.get('keyCode')
 
-@app_product.route("/api/product/list",methods=['GET'])
+    # 新增页数和每页个数参数，空时候做默认处理，并注意前端传过来可能是字符串，需要做个强制转换
+    pageSize = 10 if request.args.get('pageSize') is None else int(request.args.get('pageSize'))
+    currentPage = 1 if request.args.get('currentPage') is None else int(request.args.get('currentPage'))
+
+    sql = "SELECT * FROM `products` WHERE `status`=0"
+    # 增加基础全量个数统计
+    sqlCount = "SELECT COUNT(*) as `count` FROM `products` WHERE `status`=0"
+
+    # 条件拼接全量统计也需要同步
+
+    if title is not None:
+        sql = sql + " AND `title` LIKE '%{}%'".format(title)
+        sqlCount = sqlCount + " AND `title` LIKE '%{}%'".format(title)
+    if keyCode is not None:
+        sql = sql + " AND `keyCode` LIKE '%{}%'".format(keyCode)
+        sqlCount = sqlCount + " AND `keyCode` LIKE '%{}%'".format(keyCode)
+
+    # 排序最后拼接带分页查询
+    sql = sql + ' ORDER BY `update` DESC LIMIT {},{}'.format((currentPage - 1) * pageSize, pageSize)
+
+    connection = connectDB()
+
+    # 使用python的with..as控制流语句（相当于简化的try except finally）
+    with connection:
+        # 先查询总数
+        with connection.cursor() as cursor:
+            cursor.execute(sqlCount)
+            total = cursor.fetchall()
+
+        # 执行查询分页查询
+        with connection.cursor() as cursor:
+            # 按照条件进行查询
+            cursor.execute(sql)
+            data = cursor.fetchall()
+
+    # 带着分页查询结果和总条数返回，total注意是list字段需要下角标key取值
+    resp_data = {
+        "code": 20000,
+        "message": "success",
+        "data": data,
+        "total": total[0]['count']
+    }
+
+    return resp_data
+
+
+@app_product.route("/api/product/list", methods=['GET'])
 def product_list():
     # 初始化数据库链接
     connection = connectDB()
@@ -157,6 +209,7 @@ def product_update():
         with connection.cursor() as cursor:
             # 拼接更新语句,并用参数化%s构造防止基本的SQL注入
             # 条件为id，更新时间用数据库NOW()获取当前时间
+
             sql = "UPDATE `products` SET `keyCode`=%s, `title`=%s,`desc`=%s,`operator`=%s, `update`= NOW() WHERE id=%s"
             cursor.execute(sql, (body["keyCode"], body["title"], body["desc"], body["operator"], body['id']))
             # 提交执行保存更新数据

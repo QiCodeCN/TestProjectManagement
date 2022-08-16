@@ -24,3 +24,8 @@ TPMService/apis/__pycache__/
 TPMService/venv/
 TPMService/static
 TPMService/templates/
+
+.DS_Store
+# Arco
+TPMArco/.husky/
+TPMArco/.idea/

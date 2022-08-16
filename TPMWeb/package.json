@@ -18,7 +18,7 @@
     "@antv/g2plot": "^2.4.7",
     "axios": "0.21.1",
     "echarts": "^5.2.2",
-    "element-ui": "2.15.6",
+    "element-ui": "2.15.8",
     "js-cookie": "2.2.0",
     "moment": "2.29.1",
     "normalize.css": "7.0.0",
