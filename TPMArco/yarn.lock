@@ -41,7 +41,7 @@
   version "7.16.8"
   resolved "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.16.8.tgz"
 
-"@babel/core@>=7.2.2", "@babel/core@>=7.9.0", "@babel/core@^7.16.5":
+"@babel/core@>=7.2.2", "@babel/core@^7.16.5":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/core/-/core-7.16.7.tgz"
   dependencies:
@@ -389,6 +389,22 @@
   version "11.0.0"
   resolved "https://registry.npmjs.org/@commitlint/types/-/types-11.0.0.tgz"
 
+"@csstools/css-parser-algorithms@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.3.0.tgz#0cc3a656dc2d638370ecf6f98358973bfbd00141"
+
+"@csstools/css-tokenizer@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-2.1.1.tgz#07ae11a0a06365d7ec686549db7b729bc036528e"
+
+"@csstools/media-query-list-parser@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@csstools/media-query-list-parser/-/media-query-list-parser-2.1.2.tgz#6ef642b728d30c1009bfbba3211c7e4c11302728"
+
+"@csstools/selector-specificity@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-3.0.0.tgz#798622546b63847e82389e473fd67f2707d82247"
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.3.tgz"
@@ -517,19 +533,6 @@
   version "0.7.0"
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-0.7.0.tgz"
 
-"@stylelint/postcss-css-in-js@^0.37.2":
-  version "0.37.2"
-  resolved "https://registry.npmjs.org/@stylelint/postcss-css-in-js/-/postcss-css-in-js-0.37.2.tgz"
-  dependencies:
-    "@babel/core" ">=7.9.0"
-
-"@stylelint/postcss-markdown@^0.36.2":
-  version "0.36.2"
-  resolved "https://registry.npmjs.org/@stylelint/postcss-markdown/-/postcss-markdown-0.36.2.tgz"
-  dependencies:
-    remark "^13.0.0"
-    unist-util-find-all-after "^3.0.2"
-
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.npmjs.org/@trysound/sax/-/sax-0.2.0.tgz"
@@ -602,17 +605,11 @@
   version "4.14.178"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.178.tgz"
 
-"@types/mdast@^3.0.0":
-  version "3.0.10"
-  resolved "https://registry.npmjs.org/@types/mdast/-/mdast-3.0.10.tgz"
-  dependencies:
-    "@types/unist" "*"
-
 "@types/minimatch@*":
   version "3.0.5"
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.5.tgz"
 
-"@types/minimist@^1.2.0":
+"@types/minimist@^1.2.0", "@types/minimist@^1.2.2":
   version "1.2.2"
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.2.tgz"
 
@@ -642,7 +639,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/unist@*", "@types/unist@^2.0.0", "@types/unist@^2.0.2":
+"@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.6"
   resolved "https://registry.npmjs.org/@types/unist/-/unist-2.0.6.tgz"
 
@@ -1207,7 +1204,7 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
 
-autoprefixer@^9.0.0, autoprefixer@^9.8.6:
+autoprefixer@^9.0.0:
   version "9.8.8"
   resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-9.8.8.tgz"
   dependencies:
@@ -1354,7 +1351,7 @@ braces@^2.3.1:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
-braces@^3.0.1, braces@~3.0.2:
+braces@^3.0.2, braces@~3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz"
   dependencies:
@@ -1483,6 +1480,15 @@ camelcase-keys@^6.2.2:
     map-obj "^4.0.0"
     quick-lru "^4.0.1"
 
+camelcase-keys@^7.0.0:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-7.0.2.tgz#d048d8c69448745bb0de6fc4c1c52a30dfbe7252"
+  dependencies:
+    camelcase "^6.3.0"
+    map-obj "^4.1.0"
+    quick-lru "^5.1.1"
+    type-fest "^1.2.1"
+
 camelcase@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz"
@@ -1495,7 +1501,7 @@ camelcase@^5.0.0, camelcase@^5.3.1:
   version "5.3.1"
   resolved "https://registry.npmjs.org/camelcase/-/camelcase-5.3.1.tgz"
 
-camelcase@^6.0.0:
+camelcase@^6.0.0, camelcase@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/camelcase/-/camelcase-6.3.0.tgz"
 
@@ -1549,7 +1555,7 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.1:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
+chalk@^4.0.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   dependencies:
@@ -1652,12 +1658,6 @@ clone-regexp@^1.0.0:
     is-regexp "^1.0.0"
     is-supported-regexp-flag "^1.0.0"
 
-clone-regexp@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/clone-regexp/-/clone-regexp-2.2.0.tgz"
-  dependencies:
-    is-regexp "^2.0.0"
-
 clone-response@1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/clone-response/-/clone-response-1.0.2.tgz"
@@ -1708,6 +1708,10 @@ color@^3.1.3:
   dependencies:
     color-convert "^1.9.3"
     color-string "^1.6.0"
+
+colord@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/colord/-/colord-2.9.3.tgz#4f8ce919de456f1d5c1c368c307fe20f3e59fb43"
 
 colorette@^1.4.0:
   version "1.4.0"
@@ -1846,6 +1850,15 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+cosmiconfig@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-8.2.0.tgz#f7d17c56a590856cd1e7cee98734dca272b0d8fd"
+  dependencies:
+    import-fresh "^3.2.1"
+    js-yaml "^4.1.0"
+    parse-json "^5.0.0"
+    path-type "^4.0.0"
+
 cross-env@^7.0.3:
   version "7.0.3"
   resolved "https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz"
@@ -1878,6 +1891,10 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+css-functions-list@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/css-functions-list/-/css-functions-list-3.1.0.tgz#cf5b09f835ad91a00e5959bcfc627cd498e1321b"
+
 css-select@^4.1.3:
   version "4.2.1"
   resolved "https://registry.npmjs.org/css-select/-/css-select-4.2.1.tgz"
@@ -1894,6 +1911,13 @@ css-tree@^1.1.2, css-tree@^1.1.3:
   dependencies:
     mdn-data "2.0.14"
     source-map "^0.6.1"
+
+css-tree@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-2.3.1.tgz#10264ce1e5442e8572fc82fbe490644ff54b5c20"
+  dependencies:
+    mdn-data "2.0.30"
+    source-map-js "^1.0.1"
 
 css-what@^5.1.0:
   version "5.1.0"
@@ -1951,13 +1975,7 @@ debug@^3.2.6, debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
-  version "4.3.3"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz"
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.4:
+debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.npmmirror.com/debug/-/debug-4.3.4.tgz"
   dependencies:
@@ -1973,6 +1991,10 @@ decamelize-keys@^1.0.0, decamelize-keys@^1.1.0:
 decamelize@^1.1.0, decamelize@^1.1.2, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
+
+decamelize@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-5.0.1.tgz#db11a92e58c741ef339fb0a2868d8a06a9a7b1e9"
 
 decode-uri-component@^0.2.0:
   version "0.2.2"
@@ -2796,12 +2818,6 @@ execall@^1.0.0:
   dependencies:
     clone-regexp "^1.0.0"
 
-execall@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/execall/-/execall-2.0.0.tgz"
-  dependencies:
-    clone-regexp "^2.1.0"
-
 executable@^4.1.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/executable/-/executable-4.1.1.tgz"
@@ -2882,19 +2898,9 @@ fast-glob@^2.2.6:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^3.0.3, fast-glob@^3.2.11:
-  version "3.2.11"
-  resolved "https://registry.npmjs.org/fast-glob/-/fast-glob-3.2.11.tgz"
-  dependencies:
-    "@nodelib/fs.stat" "^2.0.2"
-    "@nodelib/fs.walk" "^1.2.3"
-    glob-parent "^5.1.2"
-    merge2 "^1.3.0"
-    micromatch "^4.0.4"
-
-fast-glob@^3.2.5, fast-glob@^3.2.9:
-  version "3.2.10"
-  resolved "https://registry.npmjs.org/fast-glob/-/fast-glob-3.2.10.tgz"
+fast-glob@^3.0.3, fast-glob@^3.2.11, fast-glob@^3.2.9, fast-glob@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.0.tgz#7c40cb491e1e2ed5664749e87bfb516dbe8727c0"
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
@@ -2916,9 +2922,9 @@ fast-xml-parser@^3.19.0:
   dependencies:
     strnum "^1.0.4"
 
-fastest-levenshtein@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.npmjs.org/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz"
+fastest-levenshtein@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz#210e61b6ff181de91ea9b3d1b84fdedd47e034e5"
 
 fastq@^1.6.0:
   version "1.13.0"
@@ -3150,7 +3156,7 @@ get-proxy@^2.0.0:
   dependencies:
     npm-conf "^1.1.0"
 
-get-stdin@8.0.0, get-stdin@^8.0.0:
+get-stdin@8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/get-stdin/-/get-stdin-8.0.0.tgz"
 
@@ -3296,7 +3302,7 @@ globby@^10.0.0:
     merge2 "^1.2.3"
     slash "^3.0.0"
 
-globby@^11.0.3, globby@^11.0.4:
+globby@^11.0.4, globby@^11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/globby/-/globby-11.1.0.tgz"
   dependencies:
@@ -3324,7 +3330,7 @@ globjoin@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/globjoin/-/globjoin-0.1.4.tgz"
 
-gonzales-pe@^4.2.3, gonzales-pe@^4.3.0:
+gonzales-pe@^4.2.3:
   version "4.3.0"
   resolved "https://registry.npmjs.org/gonzales-pe/-/gonzales-pe-4.3.0.tgz"
   dependencies:
@@ -3475,9 +3481,9 @@ html-tags@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/html-tags/-/html-tags-2.0.0.tgz"
 
-html-tags@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/html-tags/-/html-tags-3.1.0.tgz"
+html-tags@^3.1.0, html-tags@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.3.1.tgz#a04026a18c882e4bba8a01a3d39cfe465d40b5ce"
 
 htmlparser2@^3.10.0:
   version "3.10.1"
@@ -3520,9 +3526,9 @@ ignore@^4.0.3, ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.npmjs.org/ignore/-/ignore-4.0.6.tgz"
 
-ignore@^5.0.4, ignore@^5.1.1, ignore@^5.1.8, ignore@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
+ignore@^5.0.4, ignore@^5.1.1, ignore@^5.1.8, ignore@^5.2.0, ignore@^5.2.4:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
 
 image-size@~0.5.0:
   version "0.5.5"
@@ -3636,6 +3642,10 @@ indent-string@^3.0.0:
 indent-string@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/indent-string/-/indent-string-4.0.0.tgz"
+
+indent-string@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-5.0.0.tgz#4fd2980fccaf8622d14c64d694f4cf33c81951a5"
 
 indexes-of@^1.0.1:
   version "1.0.1"
@@ -3887,15 +3897,15 @@ is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-1.1.0.tgz"
 
-is-plain-obj@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-2.1.0.tgz"
-
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz"
   dependencies:
     isobject "^3.0.1"
+
+is-plain-object@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-5.0.0.tgz#4427f50ab3429e9025ea7d52e9043a9ef4159344"
 
 is-png@^2.0.0:
   version "2.0.0"
@@ -3911,10 +3921,6 @@ is-regex@^1.1.4:
 is-regexp@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/is-regexp/-/is-regexp-1.0.0.tgz"
-
-is-regexp@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/is-regexp/-/is-regexp-2.1.0.tgz"
 
 is-retry-allowed@^1.0.0, is-retry-allowed@^1.1.0:
   version "1.2.0"
@@ -3959,14 +3965,6 @@ is-text-path@^1.0.1:
   resolved "https://registry.npmjs.org/is-text-path/-/is-text-path-1.0.1.tgz"
   dependencies:
     text-extensions "^1.0.0"
-
-is-typedarray@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/is-typedarray/-/is-typedarray-1.0.0.tgz"
-
-is-unicode-supported@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz"
 
 is-utf8@^0.2.0:
   version "0.2.1"
@@ -4143,9 +4141,9 @@ known-css-properties@^0.11.0:
   version "0.11.0"
   resolved "https://registry.npmjs.org/known-css-properties/-/known-css-properties-0.11.0.tgz"
 
-known-css-properties@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.npmjs.org/known-css-properties/-/known-css-properties-0.21.0.tgz"
+known-css-properties@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.27.0.tgz#82a9358dda5fe7f7bd12b5e7142c0a205393c0c5"
 
 less@^4.1.2:
   version "4.1.2"
@@ -4274,13 +4272,6 @@ log-symbols@^2.0.0, log-symbols@^2.2.0:
   dependencies:
     chalk "^2.0.1"
 
-log-symbols@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/log-symbols/-/log-symbols-4.1.0.tgz"
-  dependencies:
-    chalk "^4.1.0"
-    is-unicode-supported "^0.1.0"
-
 log-update@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/log-update/-/log-update-4.0.0.tgz"
@@ -4297,7 +4288,7 @@ logalot@^2.0.0, logalot@^2.1.0:
     figures "^1.3.5"
     squeak "^1.0.0"
 
-longest-streak@^2.0.0, longest-streak@^2.0.1:
+longest-streak@^2.0.1:
   version "2.0.4"
   resolved "https://registry.npmjs.org/longest-streak/-/longest-streak-2.0.4.tgz"
 
@@ -4391,7 +4382,7 @@ map-obj@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/map-obj/-/map-obj-2.0.0.tgz"
 
-map-obj@^4.0.0:
+map-obj@^4.0.0, map-obj@^4.1.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/map-obj/-/map-obj-4.3.0.tgz"
 
@@ -4419,34 +4410,30 @@ mdast-util-compact@^1.0.0:
   dependencies:
     unist-util-visit "^1.1.0"
 
-mdast-util-from-markdown@^0.8.0:
-  version "0.8.5"
-  resolved "https://registry.npmjs.org/mdast-util-from-markdown/-/mdast-util-from-markdown-0.8.5.tgz"
-  dependencies:
-    "@types/mdast" "^3.0.0"
-    mdast-util-to-string "^2.0.0"
-    micromark "~2.11.0"
-    parse-entities "^2.0.0"
-    unist-util-stringify-position "^2.0.0"
-
-mdast-util-to-markdown@^0.6.0:
-  version "0.6.5"
-  resolved "https://registry.npmjs.org/mdast-util-to-markdown/-/mdast-util-to-markdown-0.6.5.tgz"
-  dependencies:
-    "@types/unist" "^2.0.0"
-    longest-streak "^2.0.0"
-    mdast-util-to-string "^2.0.0"
-    parse-entities "^2.0.0"
-    repeat-string "^1.0.0"
-    zwitch "^1.0.0"
-
-mdast-util-to-string@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/mdast-util-to-string/-/mdast-util-to-string-2.0.0.tgz"
-
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz"
+
+mdn-data@2.0.30:
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.30.tgz#ce4df6f80af6cfbe218ecd5c552ba13c4dfa08cc"
+
+meow@^10.1.5:
+  version "10.1.5"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-10.1.5.tgz#be52a1d87b5f5698602b0f32875ee5940904aa7f"
+  dependencies:
+    "@types/minimist" "^1.2.2"
+    camelcase-keys "^7.0.0"
+    decamelize "^5.0.0"
+    decamelize-keys "^1.1.0"
+    hard-rejection "^2.1.0"
+    minimist-options "4.1.0"
+    normalize-package-data "^3.0.2"
+    read-pkg-up "^8.0.0"
+    redent "^4.0.0"
+    trim-newlines "^4.0.2"
+    type-fest "^1.2.2"
+    yargs-parser "^20.2.9"
 
 meow@^3.3.0:
   version "3.7.0"
@@ -4493,23 +4480,6 @@ meow@^8.0.0:
     type-fest "^0.18.0"
     yargs-parser "^20.2.3"
 
-meow@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.npmjs.org/meow/-/meow-9.0.0.tgz"
-  dependencies:
-    "@types/minimist" "^1.2.0"
-    camelcase-keys "^6.2.2"
-    decamelize "^1.2.0"
-    decamelize-keys "^1.1.0"
-    hard-rejection "^2.1.0"
-    minimist-options "4.1.0"
-    normalize-package-data "^3.0.0"
-    read-pkg-up "^7.0.1"
-    redent "^3.0.0"
-    trim-newlines "^3.0.0"
-    type-fest "^0.18.0"
-    yargs-parser "^20.2.3"
-
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
@@ -4517,13 +4487,6 @@ merge-stream@^2.0.0:
 merge2@^1.2.3, merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz"
-
-micromark@~2.11.0:
-  version "2.11.4"
-  resolved "https://registry.npmjs.org/micromark/-/micromark-2.11.4.tgz"
-  dependencies:
-    debug "^4.0.0"
-    parse-entities "^2.0.0"
 
 micromatch@^3.1.10:
   version "3.1.10"
@@ -4543,12 +4506,12 @@ micromatch@^3.1.10:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-micromatch@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.npmjs.org/micromatch/-/micromatch-4.0.4.tgz"
+micromatch@^4.0.4, micromatch@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.5.tgz#bc8999a7cbbf77cdc89f132f6e467051b49090c6"
   dependencies:
-    braces "^3.0.1"
-    picomatch "^2.2.3"
+    braces "^3.0.2"
+    picomatch "^2.3.1"
 
 mime-db@^1.28.0:
   version "1.52.0"
@@ -4566,7 +4529,7 @@ mimic-response@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/mimic-response/-/mimic-response-1.0.1.tgz"
 
-min-indent@^1.0.0:
+min-indent@^1.0.0, min-indent@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/min-indent/-/min-indent-1.0.1.tgz"
 
@@ -4651,6 +4614,10 @@ nanoid@^3.1.32:
   version "3.3.1"
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.1.tgz"
 
+nanoid@^3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz"
@@ -4703,7 +4670,7 @@ normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-
     semver "2 || 3 || 4 || 5"
     validate-npm-package-license "^3.0.1"
 
-normalize-package-data@^3.0.0:
+normalize-package-data@^3.0.0, normalize-package-data@^3.0.2:
   version "3.0.3"
   resolved "https://registry.npmjs.org/normalize-package-data/-/normalize-package-data-3.0.3.tgz"
   dependencies:
@@ -5004,17 +4971,6 @@ parse-entities@^1.0.2, parse-entities@^1.1.0:
     is-decimal "^1.0.0"
     is-hexadecimal "^1.0.0"
 
-parse-entities@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/parse-entities/-/parse-entities-2.0.0.tgz"
-  dependencies:
-    character-entities "^1.0.0"
-    character-entities-legacy "^1.0.0"
-    character-reference-invalid "^1.0.0"
-    is-alphanumerical "^1.0.0"
-    is-decimal "^1.0.0"
-    is-hexadecimal "^1.0.0"
-
 parse-json@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/parse-json/-/parse-json-2.2.0.tgz"
@@ -5028,7 +4984,7 @@ parse-json@^4.0.0:
     error-ex "^1.3.1"
     json-parse-better-errors "^1.0.1"
 
-parse-json@^5.0.0:
+parse-json@^5.0.0, parse-json@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/parse-json/-/parse-json-5.2.0.tgz"
   dependencies:
@@ -5127,7 +5083,7 @@ picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
 
@@ -5190,7 +5146,7 @@ postcss-jsx@^0.36.0:
   dependencies:
     "@babel/core" ">=7.2.2"
 
-postcss-less@^3.1.0, postcss-less@^3.1.4:
+postcss-less@^3.1.0:
   version "3.1.4"
   resolved "https://registry.npmjs.org/postcss-less/-/postcss-less-3.1.4.tgz"
   dependencies:
@@ -5220,11 +5176,15 @@ postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/postcss-resolve-nested-selector/-/postcss-resolve-nested-selector-0.1.1.tgz"
 
-postcss-safe-parser@^4.0.0, postcss-safe-parser@^4.0.2:
+postcss-safe-parser@^4.0.0:
   version "4.0.2"
   resolved "https://registry.npmjs.org/postcss-safe-parser/-/postcss-safe-parser-4.0.2.tgz"
   dependencies:
     postcss "^7.0.26"
+
+postcss-safe-parser@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-safe-parser/-/postcss-safe-parser-6.0.0.tgz#bb4c29894171a94bc5c996b9a30317ef402adaa1"
 
 postcss-sass@^0.3.5:
   version "0.3.5"
@@ -5233,14 +5193,7 @@ postcss-sass@^0.3.5:
     gonzales-pe "^4.2.3"
     postcss "^7.0.1"
 
-postcss-sass@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.npmjs.org/postcss-sass/-/postcss-sass-0.4.4.tgz"
-  dependencies:
-    gonzales-pe "^4.3.0"
-    postcss "^7.0.21"
-
-postcss-scss@^2.0.0, postcss-scss@^2.1.1:
+postcss-scss@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/postcss-scss/-/postcss-scss-2.1.1.tgz"
   dependencies:
@@ -5254,9 +5207,9 @@ postcss-selector-parser@^3.1.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-selector-parser@^6.0.5:
-  version "6.0.8"
-  resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.8.tgz"
+postcss-selector-parser@^6.0.13:
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.13.tgz#d05d8d76b1e8e173257ef9d60b706a8e5e99bf1b"
   dependencies:
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
@@ -5283,24 +5236,24 @@ postcss-value-parser@^3.3.0:
   version "3.3.1"
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz"
 
-postcss-value-parser@^4.1.0:
+postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
 
-postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.31, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0.6, postcss@^7.0.7:
+postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.26, postcss@^7.0.31, postcss@^7.0.32, postcss@^7.0.6, postcss@^7.0.7:
   version "7.0.39"
   resolved "https://registry.npmjs.org/postcss/-/postcss-7.0.39.tgz"
   dependencies:
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.1.10, postcss@^8.4.5:
-  version "8.4.5"
-  resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.5.tgz"
+postcss@^8.1.10, postcss@^8.4.24, postcss@^8.4.5:
+  version "8.4.25"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.25.tgz#4a133f5e379eda7f61e906c3b1aaa9b81292726f"
   dependencies:
-    nanoid "^3.1.30"
+    nanoid "^3.3.6"
     picocolors "^1.0.0"
-    source-map-js "^1.0.1"
+    source-map-js "^1.0.2"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -5392,6 +5345,10 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-4.0.1.tgz"
 
+quick-lru@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/read-pkg-up/-/read-pkg-up-1.0.1.tgz"
@@ -5413,6 +5370,14 @@ read-pkg-up@^7.0.1:
     find-up "^4.1.0"
     read-pkg "^5.2.0"
     type-fest "^0.8.1"
+
+read-pkg-up@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-8.0.0.tgz#72f595b65e66110f43b052dd9af4de6b10534670"
+  dependencies:
+    find-up "^5.0.0"
+    read-pkg "^6.0.0"
+    type-fest "^1.0.1"
 
 read-pkg@^1.0.0:
   version "1.1.0"
@@ -5438,6 +5403,15 @@ read-pkg@^5.2.0:
     normalize-package-data "^2.5.0"
     parse-json "^5.0.0"
     type-fest "^0.6.0"
+
+read-pkg@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-6.0.0.tgz#a67a7d6a1c2b0c3cd6aa2ea521f40c458a4a504c"
+  dependencies:
+    "@types/normalize-package-data" "^2.4.0"
+    normalize-package-data "^3.0.2"
+    parse-json "^5.2.0"
+    type-fest "^1.0.1"
 
 readable-stream@3, readable-stream@^3.0.0, readable-stream@^3.1.1:
   version "3.6.0"
@@ -5486,6 +5460,13 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
+redent@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/redent/-/redent-4.0.0.tgz#0c0ba7caabb24257ab3bb7a4fd95dd1d5c5681f9"
+  dependencies:
+    indent-string "^5.0.0"
+    strip-indent "^4.0.0"
+
 regenerator-runtime@^0.13.4:
   version "0.13.9"
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
@@ -5521,12 +5502,6 @@ remark-parse@^6.0.0:
     vfile-location "^2.0.0"
     xtend "^4.0.1"
 
-remark-parse@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.npmjs.org/remark-parse/-/remark-parse-9.0.0.tgz"
-  dependencies:
-    mdast-util-from-markdown "^0.8.0"
-
 remark-stringify@^6.0.0:
   version "6.0.4"
   resolved "https://registry.npmjs.org/remark-stringify/-/remark-stringify-6.0.4.tgz"
@@ -5546,12 +5521,6 @@ remark-stringify@^6.0.0:
     unherit "^1.0.4"
     xtend "^4.0.1"
 
-remark-stringify@^9.0.0:
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/remark-stringify/-/remark-stringify-9.0.1.tgz"
-  dependencies:
-    mdast-util-to-markdown "^0.6.0"
-
 remark@^10.0.1:
   version "10.0.1"
   resolved "https://registry.npmjs.org/remark/-/remark-10.0.1.tgz"
@@ -5560,19 +5529,11 @@ remark@^10.0.1:
     remark-stringify "^6.0.0"
     unified "^7.0.0"
 
-remark@^13.0.0:
-  version "13.0.0"
-  resolved "https://registry.npmjs.org/remark/-/remark-13.0.0.tgz"
-  dependencies:
-    remark-parse "^9.0.0"
-    remark-stringify "^9.0.0"
-    unified "^9.1.0"
-
 repeat-element@^1.1.2:
   version "1.1.4"
   resolved "https://registry.npmjs.org/repeat-element/-/repeat-element-1.1.4.tgz"
 
-repeat-string@^1.0.0, repeat-string@^1.5.4, repeat-string@^1.6.1:
+repeat-string@^1.5.4, repeat-string@^1.6.1:
   version "1.6.1"
   resolved "https://registry.npmjs.org/repeat-string/-/repeat-string-1.6.1.tgz"
 
@@ -5837,6 +5798,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.6"
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.6.tgz"
 
+signal-exit@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.0.2.tgz#ff55bb1d9ff2114c13b400688fa544ac63c36967"
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.npmmirror.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz"
@@ -5930,6 +5895,10 @@ sort-keys@^2.0.0:
 source-map-js@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.1.tgz"
+
+source-map-js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
@@ -6050,7 +6019,7 @@ string-width@^3.0.0:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^5.1.0"
 
-string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.2, string-width@^4.2.3:
+string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   dependencies:
@@ -6159,6 +6128,12 @@ strip-indent@^3.0.0:
   dependencies:
     min-indent "^1.0.0"
 
+strip-indent@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-4.0.0.tgz#b41379433dd06f5eae805e21d631e07ee670d853"
+  dependencies:
+    min-indent "^1.0.1"
+
 strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
@@ -6214,58 +6189,50 @@ stylelint-order@^4.1.0:
     postcss "^7.0.31"
     postcss-sorting "^5.0.1"
 
-stylelint@^13.8.0:
-  version "13.13.1"
-  resolved "https://registry.npmjs.org/stylelint/-/stylelint-13.13.1.tgz"
+stylelint@^15.10.1:
+  version "15.10.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-15.10.1.tgz#93f189958687e330c106b010cbec0c41dcae506d"
   dependencies:
-    "@stylelint/postcss-css-in-js" "^0.37.2"
-    "@stylelint/postcss-markdown" "^0.36.2"
-    autoprefixer "^9.8.6"
+    "@csstools/css-parser-algorithms" "^2.3.0"
+    "@csstools/css-tokenizer" "^2.1.1"
+    "@csstools/media-query-list-parser" "^2.1.2"
+    "@csstools/selector-specificity" "^3.0.0"
     balanced-match "^2.0.0"
-    chalk "^4.1.1"
-    cosmiconfig "^7.0.0"
-    debug "^4.3.1"
-    execall "^2.0.0"
-    fast-glob "^3.2.5"
-    fastest-levenshtein "^1.0.12"
+    colord "^2.9.3"
+    cosmiconfig "^8.2.0"
+    css-functions-list "^3.1.0"
+    css-tree "^2.3.1"
+    debug "^4.3.4"
+    fast-glob "^3.3.0"
+    fastest-levenshtein "^1.0.16"
     file-entry-cache "^6.0.1"
-    get-stdin "^8.0.0"
     global-modules "^2.0.0"
-    globby "^11.0.3"
+    globby "^11.1.0"
     globjoin "^0.1.4"
-    html-tags "^3.1.0"
-    ignore "^5.1.8"
+    html-tags "^3.3.1"
+    ignore "^5.2.4"
     import-lazy "^4.0.0"
     imurmurhash "^0.1.4"
-    known-css-properties "^0.21.0"
-    lodash "^4.17.21"
-    log-symbols "^4.1.0"
+    is-plain-object "^5.0.0"
+    known-css-properties "^0.27.0"
     mathml-tag-names "^2.1.3"
-    meow "^9.0.0"
-    micromatch "^4.0.4"
-    normalize-selector "^0.2.0"
-    postcss "^7.0.35"
-    postcss-html "^0.36.0"
-    postcss-less "^3.1.4"
-    postcss-media-query-parser "^0.2.3"
+    meow "^10.1.5"
+    micromatch "^4.0.5"
+    normalize-path "^3.0.0"
+    picocolors "^1.0.0"
+    postcss "^8.4.24"
     postcss-resolve-nested-selector "^0.1.1"
-    postcss-safe-parser "^4.0.2"
-    postcss-sass "^0.4.4"
-    postcss-scss "^2.1.1"
-    postcss-selector-parser "^6.0.5"
-    postcss-syntax "^0.36.2"
-    postcss-value-parser "^4.1.0"
+    postcss-safe-parser "^6.0.0"
+    postcss-selector-parser "^6.0.13"
+    postcss-value-parser "^4.2.0"
     resolve-from "^5.0.0"
-    slash "^3.0.0"
-    specificity "^0.4.1"
-    string-width "^4.2.2"
-    strip-ansi "^6.0.0"
+    string-width "^4.2.3"
+    strip-ansi "^6.0.1"
     style-search "^0.1.0"
-    sugarss "^2.0.0"
+    supports-hyperlinks "^3.0.0"
     svg-tags "^1.0.0"
-    table "^6.6.0"
-    v8-compile-cache "^2.3.0"
-    write-file-atomic "^3.0.3"
+    table "^6.8.1"
+    write-file-atomic "^5.0.1"
 
 stylelint@^9.10.1:
   version "9.10.1"
@@ -6341,11 +6308,18 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-supports-color@^7.1.0:
+supports-color@^7.0.0, supports-color@^7.1.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
   dependencies:
     has-flag "^4.0.0"
+
+supports-hyperlinks@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/supports-hyperlinks/-/supports-hyperlinks-3.0.0.tgz#c711352a5c89070779b4dad54c05a2f14b15c94b"
+  dependencies:
+    has-flag "^4.0.0"
+    supports-color "^7.0.0"
 
 supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
@@ -6376,9 +6350,9 @@ table@^5.0.0:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-table@^6.0.9, table@^6.6.0:
-  version "6.8.0"
-  resolved "https://registry.npmjs.org/table/-/table-6.8.0.tgz"
+table@^6.0.9, table@^6.8.1:
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/table/-/table-6.8.1.tgz#ea2b71359fe03b017a5fbc296204471158080bdf"
   dependencies:
     ajv "^8.0.1"
     lodash.truncate "^4.4.2"
@@ -6479,6 +6453,10 @@ trim-newlines@^3.0.0:
   version "3.0.1"
   resolved "https://registry.npmjs.org/trim-newlines/-/trim-newlines-3.0.1.tgz"
 
+trim-newlines@^4.0.2:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.1.1.tgz#28c88deb50ed10c7ba6dc2474421904a00139125"
+
 trim-repeated@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/trim-repeated/-/trim-repeated-1.0.0.tgz"
@@ -6560,11 +6538,9 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz"
 
-typedarray-to-buffer@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz"
-  dependencies:
-    is-typedarray "^1.0.0"
+type-fest@^1.0.1, type-fest@^1.2.1, type-fest@^1.2.2:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
 
 typescript@^4.5.5:
   version "4.5.5"
@@ -6606,17 +6582,6 @@ unified@^7.0.0:
     vfile "^3.0.0"
     x-is-string "^0.1.0"
 
-unified@^9.1.0:
-  version "9.2.2"
-  resolved "https://registry.npmjs.org/unified/-/unified-9.2.2.tgz"
-  dependencies:
-    bail "^1.0.0"
-    extend "^3.0.0"
-    is-buffer "^2.0.0"
-    is-plain-obj "^2.0.0"
-    trough "^1.0.0"
-    vfile "^4.0.0"
-
 union-value@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/union-value/-/union-value-1.0.1.tgz"
@@ -6636,19 +6601,9 @@ unist-util-find-all-after@^1.0.2:
   dependencies:
     unist-util-is "^3.0.0"
 
-unist-util-find-all-after@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/unist-util-find-all-after/-/unist-util-find-all-after-3.0.2.tgz"
-  dependencies:
-    unist-util-is "^4.0.0"
-
 unist-util-is@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/unist-util-is/-/unist-util-is-3.0.0.tgz"
-
-unist-util-is@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/unist-util-is/-/unist-util-is-4.1.0.tgz"
 
 unist-util-remove-position@^1.0.0:
   version "1.1.4"
@@ -6659,12 +6614,6 @@ unist-util-remove-position@^1.0.0:
 unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/unist-util-stringify-position/-/unist-util-stringify-position-1.1.2.tgz"
-
-unist-util-stringify-position@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/unist-util-stringify-position/-/unist-util-stringify-position-2.0.3.tgz"
-  dependencies:
-    "@types/unist" "^2.0.2"
 
 unist-util-stringify-position@^3.0.0:
   version "3.0.0"
@@ -6768,7 +6717,7 @@ uuid@^3.0.1:
   version "3.4.0"
   resolved "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz"
 
-v8-compile-cache@^2.0.3, v8-compile-cache@^2.3.0:
+v8-compile-cache@^2.0.3:
   version "2.3.0"
   resolved "https://registry.npmjs.org/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
 
@@ -6796,13 +6745,6 @@ vfile-message@^1.0.0:
   dependencies:
     unist-util-stringify-position "^1.1.1"
 
-vfile-message@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.npmjs.org/vfile-message/-/vfile-message-2.0.4.tgz"
-  dependencies:
-    "@types/unist" "^2.0.0"
-    unist-util-stringify-position "^2.0.0"
-
 vfile@^3.0.0:
   version "3.0.1"
   resolved "https://registry.npmjs.org/vfile/-/vfile-3.0.1.tgz"
@@ -6811,15 +6753,6 @@ vfile@^3.0.0:
     replace-ext "1.0.0"
     unist-util-stringify-position "^1.0.0"
     vfile-message "^1.0.0"
-
-vfile@^4.0.0:
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/vfile/-/vfile-4.2.1.tgz"
-  dependencies:
-    "@types/unist" "^2.0.0"
-    is-buffer "^2.0.0"
-    unist-util-stringify-position "^2.0.0"
-    vfile-message "^2.0.0"
 
 vite-plugin-compression@^0.5.1:
   version "0.5.1"
@@ -7010,14 +6943,12 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
 
-write-file-atomic@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/write-file-atomic/-/write-file-atomic-3.0.3.tgz"
+write-file-atomic@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-5.0.1.tgz#68df4717c55c6fa4281a7860b4c2ba0a6d2b11e7"
   dependencies:
     imurmurhash "^0.1.4"
-    is-typedarray "^1.0.0"
-    signal-exit "^3.0.2"
-    typedarray-to-buffer "^3.1.5"
+    signal-exit "^4.0.1"
 
 write@1.0.3:
   version "1.0.3"
@@ -7066,7 +6997,7 @@ yargs-parser@^18.1.2:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^20.2.3:
+yargs-parser@^20.2.3, yargs-parser@^20.2.9:
   version "20.2.9"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
 
@@ -7118,7 +7049,3 @@ zrender@5.2.1:
   resolved "https://registry.npmjs.org/zrender/-/zrender-5.2.1.tgz"
   dependencies:
     tslib "2.3.0"
-
-zwitch@^1.0.0:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/zwitch/-/zwitch-1.0.5.tgz"
