@@ -51,27 +51,27 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '总览', icon: 'dashboard' }
     }]
   },
   {
     path: '/tmp',
     component: Layout,
     redirect: '/tmp',
-    meta: { title: '测试管理', icon: 'testmanger' },
+    meta: { title: '解密项目', icon: 'testmanger' },
     children: [
       {
         path: '/test',
         name: 'test',
         component: () => import('@/views/test/index'),
-        meta: { title: '提测管理', icon: 'request' }
+        meta: { title: '项目管理', icon: 'request' }
       },
       {
         path: '/commit',
         name: 'commit',
         hidden: true,
         component: () => import('@/views/test/manger/commit'),
-        meta: { title: '需求提测' }
+        meta: { title: '新建项目' }
       },
       {
         path: '/report',
@@ -84,13 +84,13 @@ export const constantRoutes = [
         path: 'mytest',
         name: 'mytest',
         component: () => import('@/views/test/mydev'),
-        meta: { title: '我的提测', icon: 'mydev' }
+        meta: { title: '我的项目', icon: 'mydev' }
       },
       {
         path: 'mydev',
         name: 'mydev',
         component: () => import('@/views/test/mydev'),
-        meta: { title: '我的测试', icon: 'mytest' }
+        meta: { title: '我的报告', icon: 'mytest' }
       }
     ]
   },
@@ -98,18 +98,18 @@ export const constantRoutes = [
     path: '/settings',
     component: Layout,
     redirect: '/settings',
-    meta: { title: '基础管理', icon: '设置' },
+    meta: { title: '解密任务', icon: '设置' },
     children: [{
       path: 'product',
       name: 'Product',
       component: () => import('@/views/product/product'),
-      meta: { title: '项目产品分类', icon: '项目管理' }
+      meta: { title: '任务管理', icon: '项目管理' }
     },
     {
       path: 'apps',
       name: 'apps',
       component: () => import('@/views/product/apps'),
-      meta: { title: '服务应用管理', icon: '应用管理' }
+      meta: { title: '我的任务', icon: '应用管理' }
     }
     ]
   },

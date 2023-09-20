@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '提测系统',
+  title: '深海·任务协同平台',
 
   /**
    * @type {boolean} true | false

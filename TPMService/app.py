@@ -32,7 +32,7 @@ def after_request(response):
     if response.status_code != 200:
         headers = {'content-type': 'application/json'}
         res = make_response(format.resp_format_failed)
-        res.headers = headers
+        res.headers = headerspip
 
         return res
     return response
